@@ -1,0 +1,41 @@
+/* home.php */
+
+.titre-principal {
+    text-align: center;
+}
+
+.carroussel-image, .image-accueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5px;
+}
+
+.image-accueil {
+    filter: brightness(30%);
+}
+
+.carroussel-image-relative {
+    position: relative;
+}
+
+.carroussel-image-relative .desc-image {
+    position: absolute;
+    width: 90%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.3em;
+    color: aliceblue;
+}
+
+
+.carroussel-image-relative a:hover > .image-accueil {
+    filter: none;
+    transition: 0.3s;
+}
+
+
+
+/* fin home.php */
