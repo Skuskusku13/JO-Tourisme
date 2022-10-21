@@ -3,13 +3,19 @@
 class Modele
 {
     private $pdo;
-    public function __construct($serveur, $bdd, $user, $mdp)
+    public function __construct($serveur, $serveur2, $bdd, $user, $user2, $mdp)
     {
         $this->pdo = null;
 
         try {
             //code qui peut poser des erreurs
             $this->pdo = new PDO("mysql:host=" . $serveur . ";dbname=" . $bdd, $user, $mdp);
+            try {
+                $this->pdo = new PDO("mysql:host=" . $serveur2 . ";dbname=" . $bdd, $user2, $mdp);
+            } catch (PDOException $exp) {
+                echo "Erreur de connexion au serveur";
+                echo $exp->getMessage();
+            }
         } catch (PDOException $exp) {
             //levée d'exception
             echo "Erreur de connexion au serveur";
@@ -59,33 +65,27 @@ class Modele
     public function selectWhereEvenement($idevenement)
     {
         $requete = "select * from Evenement where idevenement = :idevenement;";
-        if($this->pdo != null)
-        {
-            $donnees =array(":idevenement"=>$idevenement);
+        if ($this->pdo != null) {
+            $donnees = array(":idevenement" => $idevenement);
             //on prepare la requete
             $select = $this->pdo->prepare($requete);
-            $select->execute($donnees); 
+            $select->execute($donnees);
             //extraction du service
             return $select->fetch();
-        }
-        else
-        {
+        } else {
             return null;
         }
-
     }
 
     public function deleteEvenement($idevenement)
     {
         $requete = "delete from Evenement where idevenement = :idevenement;";
-        $donnees =array(":idevenement"=>$idevenement);
-        if($this->pdo != null)
-        {
-           //on prepare la requete
-           $delete = $this->pdo->prepare($requete);
-           $delete->execute($donnees); 
+        $donnees = array(":idevenement" => $idevenement);
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $delete = $this->pdo->prepare($requete);
+            $delete->execute($donnees);
         }
-
     }
 
     public function updateEvenement($tab)
@@ -103,8 +103,7 @@ class Modele
             ":idcategorie" => $tab['idcategorie'],
             ":idevenement" => $tab['idevenement']
         );
-        if($this->pdo != null)
-        {
+        if ($this->pdo != null) {
             //on prepare la requete
             $insert = $this->pdo->prepare($requete);
             $insert->execute($donnees);
@@ -112,7 +111,7 @@ class Modele
     }
 
     //////////// Services //////////////
-    
+
     public function insertService($tab)
     {
         $requete = "insert into Service values (null, :libelle, :adresse, :prix, :tel, :email, :idtypeservices)";
@@ -150,49 +149,42 @@ class Modele
     public function deleteService($idservice)
     {
         $requete = "delete from Service where idservice = :idservice;";
-        $donnees =array(":idservice"=>$idservice);
-        if($this->pdo != null)
-        {
-           //on prepare la requete
-           $delete = $this->pdo->prepare($requete);
-           $delete->execute($donnees); 
+        $donnees = array(":idservice" => $idservice);
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $delete = $this->pdo->prepare($requete);
+            $delete->execute($donnees);
         }
-
     }
 
     public function selectWhereService($idservice)
     {
         $requete = "select * from Service where idservice = :idservice;";
-        if($this->pdo != null)
-        {
-            $donnees =array(":idservice"=>$idservice);
+        if ($this->pdo != null) {
+            $donnees = array(":idservice" => $idservice);
             //on prepare la requete
             $select = $this->pdo->prepare($requete);
-            $select->execute($donnees); 
+            $select->execute($donnees);
             //extraction du service
             return $select->fetch();
-        }
-        else
-        {
+        } else {
             return null;
         }
-
     }
 
     public function updateService($tab)
     {
         $requete = "update Service set libelle=:libelle, adresse=:adresse, prix=:prix, tel=:tel, email=:email, idtypeservices=:idtypeservices  where idservice= :idservice;";
         $donnees = array(
-        ":idservice"=>$tab['idservice'],
-        ":libelle"=>$tab['libelle'],
-        ":adresse"=>$tab['adresse'],
-        ":prix"=>$tab['prix'],
-        ":tel"=>$tab['tel'],
-        ":email"=>$tab['email'],
-        ":idtypeservices"=>$tab['idtypeservices']
+            ":idservice" => $tab['idservice'],
+            ":libelle" => $tab['libelle'],
+            ":adresse" => $tab['adresse'],
+            ":prix" => $tab['prix'],
+            ":tel" => $tab['tel'],
+            ":email" => $tab['email'],
+            ":idtypeservices" => $tab['idtypeservices']
         );
-        if($this->pdo != null)
-        {
+        if ($this->pdo != null) {
             //on prepare la requete
             $insert = $this->pdo->prepare($requete);
             $insert->execute($donnees);
@@ -268,14 +260,13 @@ class Modele
     {
         $requete = "insert into user values (null, :nom, :prenom, :email, :mdp, :rolee)";
         $donnees = array(
-        ":nom"=>$tab['nom'],
-        ":prenom"=>$tab['prenom'],
-        ":email"=>$tab['email'],
-        ":mdp"=>$tab['mdp'],
-        ":rolee"=>"user"
+            ":nom" => $tab['nom'],
+            ":prenom" => $tab['prenom'],
+            ":email" => $tab['email'],
+            ":mdp" => $tab['mdp'],
+            ":rolee" => "user"
         );
-        if($this->pdo != null)
-        {
+        if ($this->pdo != null) {
             //on prepare la requete
             $insert = $this->pdo->prepare($requete);
             $insert->execute($donnees);
@@ -296,5 +287,4 @@ class Modele
             return null;
         }
     }
-
 }
