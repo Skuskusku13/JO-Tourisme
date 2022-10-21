@@ -3,23 +3,21 @@
 class Modele
 {
     private $pdo;
-    public function __construct($serveur, $serveur2, $bdd, $user, $user2, $mdp)
+    public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
     {
         $this->pdo = null;
 
         try {
             //code qui peut poser des erreurs
-            $this->pdo = new PDO("mysql:host=" . $serveur . ";dbname=" . $bdd, $user, $mdp);
+            $this->pdo = new PDO("mysql:host=" . $serveur2 . ";dbname=" . $bdd, $user, $mdp2);
+        
+        } catch (PDOException $exp) {
             try {
-                $this->pdo = new PDO("mysql:host=" . $serveur2 . ";dbname=" . $bdd, $user2, $mdp);
+                $this->pdo = new PDO("mysql:host=" . $serveur. ";dbname=" . $bdd, $user, $mdp);
             } catch (PDOException $exp) {
                 echo "Erreur de connexion au serveur";
                 echo $exp->getMessage();
             }
-        } catch (PDOException $exp) {
-            //levée d'exception
-            echo "Erreur de connexion au serveur";
-            echo $exp->getMessage();
         }
     }
 

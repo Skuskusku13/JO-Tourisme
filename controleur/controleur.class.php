@@ -6,9 +6,9 @@
         //objet de la classe modele
         private $unModele;
     
-        public function __construct($serveur, $bdd, $user, $mdp){
+        public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2){
             // instanciation du modele
-            $this->unModele = new Modele($serveur, $bdd, $user, $mdp);
+            $this->unModele = new Modele($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
         }
 
         ################ evenement ################

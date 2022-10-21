@@ -4,7 +4,7 @@ require_once("controleur/controleur.class.php");
 require_once("controleur/config_bdd.php");
 
 // instanciation du controleur 
-$unControleur = new Controleur($serveur, $bdd, $user, $mdp);
+$unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 
 
 ?>
