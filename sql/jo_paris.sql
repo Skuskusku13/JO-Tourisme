@@ -1,9 +1,17 @@
 #------------------------------------------------------------
 #        Script MySQL.
 #------------------------------------------------------------
-Drop database if exists jo_paris; 
-create database jo_paris;
-use jo_paris;
+
+
+#------------------------------------------------------------
+# Table: Categorie
+#------------------------------------------------------------
+
+CREATE TABLE Categorie(
+        idcategorie Int NOT NULL ,
+        libelle     Text NOT NULL
+	,CONSTRAINT Categorie_PK PRIMARY KEY (idcategorie)
+)ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
@@ -11,9 +19,8 @@ use jo_paris;
 #------------------------------------------------------------
 
 CREATE TABLE Client(
-        idclient Int  Auto_increment  NOT NULL ,
+        idclient Int NOT NULL ,
         nom      Varchar (50) NOT NULL ,
-        prenom   Varchar (50) NOT NULL ,
         email    Varchar (50) NOT NULL ,
         tel      Varchar (50) NOT NULL ,
         mdp      Varchar (50) NOT NULL
@@ -22,11 +29,43 @@ CREATE TABLE Client(
 
 
 #------------------------------------------------------------
+# Table: Evenement
+#------------------------------------------------------------
+
+CREATE TABLE Evenement(
+        idevenement  Int NOT NULL ,
+        type         Varchar (50) NOT NULL ,
+        dateEvent    Date NOT NULL ,
+        nomEvenement Varchar (50) NOT NULL ,
+        description  Text NOT NULL ,
+        adresse      Varchar (50) NOT NULL ,
+        horraireD    Time NOT NULL ,
+        horraireF    Time NOT NULL ,
+        capacite     Int NOT NULL ,
+        idcategorie  Int NOT NULL
+	,CONSTRAINT Evenement_PK PRIMARY KEY (idevenement)
+
+	,CONSTRAINT Evenement_Categorie_FK FOREIGN KEY (idcategorie) REFERENCES Categorie(idcategorie)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Media
+#------------------------------------------------------------
+
+CREATE TABLE Media(
+        idmedia Int NOT NULL ,
+        url     Varchar (100) NOT NULL
+	,CONSTRAINT Media_PK PRIMARY KEY (idmedia)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
 # Table: Typeservice
 #------------------------------------------------------------
 
 CREATE TABLE Typeservice(
-        idtypeservices Int  Auto_increment  NOT NULL ,
+        idtypeservices Int NOT NULL ,
         libelle        Varchar (50) NOT NULL
 	,CONSTRAINT Typeservice_PK PRIMARY KEY (idtypeservices)
 )ENGINE=InnoDB;
@@ -37,7 +76,7 @@ CREATE TABLE Typeservice(
 #------------------------------------------------------------
 
 CREATE TABLE Service(
-        idservice      Int  Auto_increment  NOT NULL ,
+        idservice      Int NOT NULL ,
         libelle        Varchar (50) NOT NULL ,
         adresse        Varchar (50) NOT NULL ,
         prix           Float NOT NULL ,
@@ -51,47 +90,89 @@ CREATE TABLE Service(
 
 
 #------------------------------------------------------------
-# Table: Categorie
+# Table: Client_Pro
 #------------------------------------------------------------
 
-CREATE TABLE Categorie(
-        idcategorie Int  Auto_increment  NOT NULL ,
-        libelle     Text NOT NULL
-	,CONSTRAINT Categorie_PK PRIMARY KEY (idcategorie)
+CREATE TABLE Client_Pro(
+        idclient  Int NOT NULL ,
+        num_Siret Varchar (50) NOT NULL ,
+        adresse   Varchar (50) NOT NULL ,
+        nom       Varchar (50) NOT NULL ,
+        email     Varchar (50) NOT NULL ,
+        tel       Varchar (50) NOT NULL ,
+        mdp       Varchar (50) NOT NULL
+	,CONSTRAINT Client_Pro_PK PRIMARY KEY (idclient)
+
+	,CONSTRAINT Client_Pro_Client_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Evenement
+# Table: Client_Particulier
 #------------------------------------------------------------
 
-CREATE TABLE Evenement(
-        idevenement  Int  Auto_increment  NOT NULL ,
-        type         Varchar (50) NOT NULL ,
-        dateEvent    Date NOT NULL ,
-        nomEvenement Varchar (50) NOT NULL ,
-        description  Text NOT NULL ,
-        adresse      Varchar (50) NOT NULL ,
-        horraireD    Time NOT NULL ,
-        horraireF    Time NOT NULL ,
-        capacite     Int NOT NULL ,
-        idcategorie  Int NOT NULL
-	,CONSTRAINT Evenement_PK PRIMARY KEY (idevenement)
-	,CONSTRAINT Evenement_Categorie_FK FOREIGN KEY (idcategorie) REFERENCES Categorie(idcategorie)
+CREATE TABLE Client_Particulier(
+        idclient Int NOT NULL ,
+        prenom   Varchar (50) NOT NULL ,
+        nom      Varchar (50) NOT NULL ,
+        email    Varchar (50) NOT NULL ,
+        tel      Varchar (50) NOT NULL ,
+        mdp      Varchar (50) NOT NULL
+	,CONSTRAINT Client_Particulier_PK PRIMARY KEY (idclient)
+
+	,CONSTRAINT Client_Particulier_Client_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Media
+# Table: Pub
 #------------------------------------------------------------
 
-CREATE TABLE Media(
-        idmedia     Int  Auto_increment  NOT NULL ,
-        url         Varchar (100) NOT NULL ,
-        idevenement Int NOT NULL
-	,CONSTRAINT Media_PK PRIMARY KEY (idmedia)
+CREATE TABLE Pub(
+        idpub       Int  Auto_increment  NOT NULL ,
+        typePub     Varchar (50) NOT NULL ,
+        budget      Float NOT NULL ,
+        dateDebut   Date NOT NULL ,
+        dateFin     Date NOT NULL ,
+        idevenement Int NOT NULL ,
+        idclient    Int NOT NULL
+	,CONSTRAINT Pub_PK PRIMARY KEY (idpub)
 
-	,CONSTRAINT Media_Evenement_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
+	,CONSTRAINT Pub_Evenement_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
+	,CONSTRAINT Pub_Client_Pro0_FK FOREIGN KEY (idclient) REFERENCES Client_Pro(idclient)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Commenter
+#------------------------------------------------------------
+
+CREATE TABLE Commenter(
+        idclient    Int NOT NULL ,
+        idevenement Int NOT NULL ,
+        contenu     Text NOT NULL ,
+        note        Int NOT NULL ,
+        dateCom     Date NOT NULL
+	,CONSTRAINT Commenter_PK PRIMARY KEY (idclient,idevenement)
+
+	,CONSTRAINT Commenter_Client_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
+	,CONSTRAINT Commenter_Evenement0_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
+)ENGINE=InnoDB;
+
+#------------------------------------------------------------
+# Table: Inscription
+#------------------------------------------------------------
+
+CREATE TABLE Inscription(
+        idclient    Int NOT NULL ,
+        idevenement Int NOT NULL ,
+        dateD       Date NOT NULL ,
+        commentaire Text NOT NULL ,
+        statut      Varchar (50) NOT NULL
+	,CONSTRAINT Inscription_PK PRIMARY KEY (idclient,idevenement)
+
+	,CONSTRAINT Inscription_Client_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
+	,CONSTRAINT Inscription_Evenement0_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
 )ENGINE=InnoDB;
 
 
@@ -102,48 +183,9 @@ CREATE TABLE Media(
 CREATE TABLE Louer(
         idclient  Int NOT NULL ,
         idservice Int NOT NULL ,
-        dateD     Date NOT NULL ,
-        dateF     Date NOT NULL ,
-        heureD    Time NOT NULL ,
-        heureF    Time NOT NULL
-	,CONSTRAINT Louer_PK PRIMARY KEY (idclient,idservice)
-
-	,CONSTRAINT Louer_Client_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
-	,CONSTRAINT Louer_Service0_FK FOREIGN KEY (idservice) REFERENCES Service(idservice)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Commenter
-#------------------------------------------------------------
-
-CREATE TABLE Commenter(
-        idevenement Int NOT NULL ,
-        idclient    Int NOT NULL ,
-        contenu     Text NOT NULL ,
-        note        Int NOT NULL ,
-        dateCom     Date NOT NULL
-	,CONSTRAINT Commenter_PK PRIMARY KEY (idevenement,idclient)
-
-	,CONSTRAINT Commenter_Evenement_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
-	,CONSTRAINT Commenter_Client0_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: Inscription
-#------------------------------------------------------------
-
-CREATE TABLE Inscription(
-        idevenement Int NOT NULL ,
-        idclient    Int NOT NULL ,
-        dateD       Date NOT NULL ,
-        commentaire Text NOT NULL ,
-        statut      Varchar (50) NOT NULL
-	,CONSTRAINT Inscription_PK PRIMARY KEY (idevenement,idclient)
-
-	,CONSTRAINT Inscription_Evenement_FK FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
-	,CONSTRAINT Inscription_Client0_FK FOREIGN KEY (idclient) REFERENCES Client(idclient)
+        heureD TIME,
+        heureF TIME,
+        ,CONSTRAINT Louer_PK PRIMARY KEY (idclient, idservice)
 )ENGINE=InnoDB;
 
 
@@ -179,18 +221,19 @@ insert into Typeservice values (NULL, "Sport");
 #--------------------------------------------------------
 
 
-insert into `Service` values (NULL, "Novotel Paris Vaugirart", "257 Rue de Vaugirard", 200, "0155689745", "NovotelVaugirard@gmail.com", 01);
-insert into `Service` values (NULL, "Hotel Molitor", "13 Rue Nungesser et Coli", 500, "0158451275", "HotelMolitor@gmail.com", 01);
-insert into `Service` values (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", 01);
-insert into `Service` values (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", 02);
-insert into `Service` values (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", 02);
-insert into `Service` values (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", 02);
-insert into `Service` values (NULL, "Musée Du Louvre", "1 Rue de Rivoli ", 20, "0188451236", "Musée-louvre@gmail.com", 03);
-insert into `Service` values (NULL, "Cinéma Pathé Opéra", "32 Rue Louis le Grand", 20, "0188584712", "Cinémapathé@gmail.com", 03);
-insert into `Service` values (NULL, "Muséum d'Histoire naturelle", "57 Rue Cuvier", 20, "015689521", "MuséH-Naturelle@gmail.com", 03);
-insert into `Service` values (NULL, "Fitness Park", "65 Rue de Bagnolet", 20, "0185496285", "Fitness20@gmail.com", 04);
-insert into `Service` values (NULL, "Picine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", 04);
-insert into `Service` values (NULL, "Basic-Fit", "58 Av. Philippe Auguste", 20, "0145879254", "Basic-Fit@gmail.com", 04);
+insert into `Service` values 
+        (NULL, "Novotel Paris Vaugirart", "257 Rue de Vaugirard", 200, "0155689745", "NovotelVaugirard@gmail.com", 01),
+        (NULL, "Hotel Molitor", "13 Rue Nungesser et Coli", 500, "0158451275", "HotelMolitor@gmail.com", 01),
+        (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", 01),
+        (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", 02),
+        (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", 02),
+        (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", 02),
+        (NULL, "Musée Du Louvre", "1 Rue de Rivoli ", 20, "0188451236", "Musée-louvre@gmail.com", 03),
+        (NULL, "Cinéma Pathé Opéra", "32 Rue Louis le Grand", 20, "0188584712", "Cinémapathé@gmail.com", 03),
+        (NULL, "Muséum d'Histoire naturelle", "57 Rue Cuvier", 20, "015689521", "MuséH-Naturelle@gmail.com", 03),
+        (NULL, "Fitness Park", "65 Rue de Bagnolet", 20, "0185496285", "Fitness20@gmail.com", 04),
+        (NULL, "Picine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", 04),
+        (NULL, "Basic-Fit", "58 Av. Philippe Auguste", 20, "0145879254", "Basic-Fit@gmail.com", 04);
 
 #---------------------------------------------------------
 # insertion de Evenement dans la table Evenement
