@@ -53,7 +53,7 @@ CREATE TABLE Client_Particulier
 
 CREATE TABLE Categorie
 (
-    idcategorie Int NOT NULL auto_increment,
+    idcategorie Int (3) NOT NULL auto_increment,
     libelle     Text NOT NULL ,
     PRIMARY KEY (idcategorie)
 );
@@ -64,7 +64,7 @@ CREATE TABLE Categorie
 
 CREATE TABLE Evenement
 (
-    idevenement  Int NOT NULL auto_increment,
+    idevenement  Int (3) NOT NULL auto_increment,
     type         Varchar (50) NOT NULL ,
     dateEvent    Date NOT NULL ,
     nomEvenement Varchar (50) NOT NULL ,
@@ -85,7 +85,7 @@ CREATE TABLE Evenement
 
 CREATE TABLE Media
 (
-    idmedia Int NOT NULL auto_increment,
+    idmedia Int (3) NOT NULL auto_increment,
     url     Varchar (100) NOT NULL ,
     PRIMARY KEY (idmedia)
 );
@@ -97,7 +97,7 @@ CREATE TABLE Media
 
 CREATE TABLE Typeservice
 (
-    idtypeservices Int NOT NULL auto_increment,
+    idtypeservices Int (3) NOT NULL auto_increment,
     libelle        Varchar (50) NOT NULL,
     PRIMARY KEY (idtypeservices)
 );
@@ -109,7 +109,7 @@ CREATE TABLE Typeservice
 
 CREATE TABLE Service
 (
-    idservice      Int NOT NULL auto_increment,
+    idservice      Int (3) NOT NULL auto_increment,
     libelle        Varchar (50) NOT NULL ,
     adresse        Varchar (50) NOT NULL ,
     prix           Float NOT NULL ,
@@ -127,7 +127,7 @@ CREATE TABLE Service
 
 CREATE TABLE Pub
 (
-    idpub       Int NOT NULL auto_increment ,
+    idpub       Int (3) NOT NULL auto_increment ,
     typePub     Varchar (50) NOT NULL ,
     budget      Float NOT NULL ,
     dateDebut   Date NOT NULL ,
@@ -146,7 +146,7 @@ CREATE TABLE Pub
 
 CREATE TABLE Commenter
 (
-    iduser    Int NOT NULL auto_increment ,
+    iduser    Int NOT NULL ,
     idevenement Int NOT NULL ,
     contenu     Text NOT NULL ,
     note        Int NOT NULL ,
@@ -162,7 +162,7 @@ CREATE TABLE Commenter
 
 CREATE TABLE Inscription
 (
-    iduser    Int NOT NULL auto_increment ,
+    iduser    Int NOT NULL ,
     idevenement Int NOT NULL ,
     dateD       Date NOT NULL ,
     commentaire Text NOT NULL ,
@@ -179,7 +179,7 @@ CREATE TABLE Inscription
 
 CREATE TABLE Louer
 (
-    iduser  Int NOT NULL auto_increment ,
+    iduser  Int NOT NULL ,
     idservice Int NOT NULL ,
     heureD TIME,
     heureF TIME,
