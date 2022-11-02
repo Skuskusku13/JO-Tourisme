@@ -2,10 +2,15 @@
 <center>
     <h1> Veuillez selectionner votre profil utilisateur </h1>
 <br>
-<tr>
-    <td><input class="boutonP" type="submit" name="Particulier" value="Particulier"></td>
-    <td><input class="boutonP" type="submit" name="Professionnel" value="Professionnel"></td>
-</tr>
+
+<form action="" method="POST">
+    <table>
+        <tr>
+            <td><input type="submit" name="Particulier" value="Particulier"></td>
+            <td><input type="submit" name="Professionnel" value="Professionnel"></td>
+        </tr>
+    </table>
+</form>
 </center>  
 
 <?php
@@ -24,6 +29,10 @@ if (isset($_POST['Particulier']))
                         <td class="tdtd"><input type="text" name="nom"></td>
                     </tr>
                     <tr>
+                        <td>Prénom : </td>
+                        <td class="tdtd"><input type="text" name="prenom"></td>
+                    </tr>
+                    <tr>
                         <td>Email : </td>
                         <td class="tdtd"><input type="text" name="email"></td>
                     </tr>
@@ -36,20 +45,17 @@ if (isset($_POST['Particulier']))
                         <td class="tdtd"><input type="text" name="tel"></td>
                     </tr>
                     <tr>
-                        <td>Prénom : </td>
-                        <td class="tdtd"><input type="text" name="prenom"></td>
-                    </tr>
-                    <tr>
                         <td><input class="boutonP" type="reset" name="Annuler" value="Annuler"></td>
                         <td><input class="boutonP" type="submit" name="Inscription" value="Inscription"></td>
-                    </tr>';
+                    </tr>
+                </table>';
 
                     if (isset($_POST['Inscription'])) {
                         echo $controleur->insertClientPar($_POST);
+                        header("Location: index.php?page=1");
                     }
 
-                echo '</table>
-        </form>
+        echo '</form>
     </main>';
 }
 

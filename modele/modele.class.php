@@ -279,7 +279,7 @@ class Modele
             ":mdp" => $tab['mdp'],
             ":tel" => $tab['tel'],
             ":role" => "user",
-            ":prnom" => $tab['prenom']
+            ":prenom" => $tab['prenom']
         );
         if ($this->pdo != null) {
             //on prepare la requete
@@ -309,12 +309,11 @@ class Modele
 
     public function selectUser($email)
     {
-        $requete = "SELECT * FROM user WHERE email = '$email'";
-
+        $requete = "SELECT * FROM user WHERE email=?";
         if ($this->pdo != null) {
             // on prépare la requete 
             $select  = $this->pdo->prepare($requete);
-            $select->execute();
+            $select->execute(array($email));
             //extraction de tous les clients
             return $select->fetch();
         } else {
