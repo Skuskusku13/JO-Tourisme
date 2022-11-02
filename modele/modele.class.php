@@ -254,7 +254,7 @@ class Modele
 
     /////////////// USER ////////////
 
-    public function insertUser($tab)
+    /*public function insertUser($tab)
     {
         $requete = "insert into user values (null, :nom, :prenom, :email, :mdp, :rolee)";
         $donnees = array(
@@ -269,7 +269,43 @@ class Modele
             $insert = $this->pdo->prepare($requete);
             $insert->execute($donnees);
         }
+    }*/
+    public function insertClientPar($tab)
+    {
+        $requete = "call insertClientPar(:nom, :email, :mdp, :tel, :role, :prenom)";
+        $donnees = array(
+            ":nom" => $tab['nom'],
+            ":email" => $tab['email'],
+            ":mdp" => $tab['mdp'],
+            ":tel" => $tab['tel'],
+            ":role" => "user",
+            ":prnom" => $tab['prenom']
+        );
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $insert = $this->pdo->prepare($requete);
+            $insert->execute($donnees);
+        }
     }
+    public function insertClientPro($tab)
+    {
+        $requete = "call insertClientPro(:nom, :email, :mdp, :tel, :role, :num_Siret, :adresse)";
+        $donnees = array(
+            ":nom" => $tab['nom'],
+            ":email" => $tab['email'],
+            ":mdp" => $tab['mdp'],
+            ":tel" => $tab['tel'],
+            ":role" => "user",
+            ":num_Siret" => $tab['num_Siret'],
+            ":adresse" => $tab['adresse']
+        );
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $insert = $this->pdo->prepare($requete);
+            $insert->execute($donnees);
+        }
+    }
+
 
     public function selectUser($email)
     {

@@ -115,7 +115,7 @@
 
         ################ user ################
 
-        public function insertUser($tab){
+       /* public function insertUser($tab){
             // on controle la validité des données 
             foreach($tab as $onevalue){
                if ($onevalue == ""){
@@ -124,6 +124,28 @@
             }
             echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
             $this->unModele->insertUser($tab);
+            
+        }*/
+        public function insertClientPar($tab){
+            // on controle la validité des données 
+            foreach($tab as $onevalue){
+               if ($onevalue == ""){
+                return "<p style='text-align: center;'>Veuillez remplir tous les champs</p>";
+               } 
+            }
+            echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
+            $this->unModele->insertClientPar($tab);
+            
+        }
+        public function insertClientPro($tab){
+            // on controle la validité des données 
+            foreach($tab as $onevalue){
+               if ($onevalue == ""){
+                return "<p style='text-align: center;'>Veuillez remplir tous les champs</p>";
+               } 
+            }
+            echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
+            $this->unModele->insertClientPro($tab);
             
         }
 
