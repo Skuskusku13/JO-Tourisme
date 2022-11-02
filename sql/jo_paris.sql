@@ -345,3 +345,111 @@ insert into Evenement values
         (NULL, "Epreuve Lancer de Disque", "2024-07-19","Epreuve force masculine", "Stade ouvert", "Stade de Saint-Denis", "10:30", "12:00", 5000, 01);
 
 
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie Hotels
+#-----------------------------------------------------------------
+
+drop view if exists vueHotels;
+create view vueHotels as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 1
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie restaurant et bar
+#-----------------------------------------------------------------
+
+drop view if exists vueRestaurants;
+create view vueRestaurants as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 2
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie Culture 
+#-----------------------------------------------------------------
+
+drop view if exists vueCulture;
+create view vueCulture as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 3
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie sport 
+#-----------------------------------------------------------------
+
+drop view if exists vueSport;
+create view vueSport as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 4
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie Hotels
+#-----------------------------------------------------------------
+
+drop view if exists vueHotels;
+create view vueHotels as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 1
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie restaurant et bar
+#-----------------------------------------------------------------
+
+drop view if exists vueRestaurants;
+create view vueRestaurants as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 2
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie Culture 
+#-----------------------------------------------------------------
+
+drop view if exists vueCulture;
+create view vueCulture as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where s.idtypeservices = t.idtypeservices
+    and s.idtypeservices = 3
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue des Evenements de la categorie Epreuves 
+#-----------------------------------------------------------------
+
+drop view if exists vueEpreuves;
+create view vueEpreuves as (
+	select c.libelle as Categorie, e.type, e.dateEvent as Date , e.nomEvenement as Nom, e.description, e.adresse, e.horraireD as Debut, e.horraireF as Fin, e.capacite
+	from Evenement e, Categorie c
+	where e.idcategorie = c.idcategorie
+    and e.idcategorie = 1
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue des Evenements de la categorie Epreuves 
+#-----------------------------------------------------------------
+
+drop view if exists vueCeremonies;
+create view vueCeremonies as (
+	select c.libelle as Categorie, e.type, e.dateEvent as Date , e.nomEvenement as Nom, e.description, e.adresse, e.horraireD as Debut, e.horraireF as Fin, e.capacite
+	from Evenement e, Categorie c
+	where e.idcategorie = c.idcategorie
+    and e.idcategorie = 2
+);
+
