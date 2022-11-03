@@ -278,7 +278,7 @@ class Modele
             ":email" => $tab['email'],
             ":mdp" => $tab['mdp'],
             ":tel" => $tab['tel'],
-            ":role" => "user",
+            ":role" => "clientPart",
             ":prenom" => $tab['prenom']
         );
         if ($this->pdo != null) {
@@ -295,7 +295,7 @@ class Modele
             ":email" => $tab['email'],
             ":mdp" => $tab['mdp'],
             ":tel" => $tab['tel'],
-            ":role" => "user",
+            ":role" => "clientPro",
             ":num_Siret" => $tab['num_Siret'],
             ":adresse" => $tab['adresse']
         );

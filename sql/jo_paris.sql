@@ -16,7 +16,7 @@ create table user
     email varchar(255) NOT NULL ,
     mdp varchar(255) NOT NULL ,
     tel Varchar (50) NOT NULL ,
-    role enum("admin", "user"),
+    role enum("admin", "clientPart", "clientPro"),
     primary key(iduser)
 );
 
@@ -288,13 +288,13 @@ insert into user values (NULL, "Akilal", "a@gmail.com", "123", "0605743353", "ad
 # insertion de Client_Particulier dans la table Client_Particulier
 #-----------------------------------------------------------------
 
-call insertClientPar ("Levy", "l@gmail.com", "123", "0754862541", "user", "Dan");
+call insertClientPar ("Levy", "l@gmail.com", "123", "0754862541", "clientPart", "Dan");
 
 #---------------------------------------------------------
 # insertion de Client_Pro dans la table Client_Pro
 #--------------------------------------------------------
 
-call insertClientPro ("Housset", "h@gmail.com", "123", "0875463251", "user", "84351248751428", "12 rue de Cléry Paris");
+call insertClientPro ("Housset", "h@gmail.com", "123", "0875463251", "clientPro", "84351248751428", "12 rue de Cléry Paris");
 
 #---------------------------------------------------------
 # insertion de Categories dans la table Categorie
