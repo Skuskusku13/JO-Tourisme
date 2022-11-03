@@ -1,4 +1,5 @@
 <main>
+
     <h1 class="titre-principal"> Bienvenue sur notre site pour les Jeux Olympiques 2024</h1>
 
     <div class="carroussel-image">
