@@ -24,15 +24,12 @@
             </tr>
             <tr>
                 <td><input class="boutonP" type="reset" name="Annuler" value="Annuler"></td>
-                <td><input class="boutonP" type="submit" name="Inscription" value="Inscription"></td>
+                <td><input class="boutonP" type="submit" name="InscriptionPart" value="Inscription"></td>
             </tr>
         </table>';
 
-        <?php if (isset($_POST['Inscription'])) {
-            echo $controleur->insertClientPar($_POST);
-            header("Location: index.php?page=1");
-        }
-        ?>
+        
 
     </form>
+    
 </main>

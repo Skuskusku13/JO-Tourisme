@@ -27,9 +27,10 @@ $controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
                     $email = $_POST['email'];
                     $mdp = $_POST['mdp'];
                     $unUser = $controleur->selectUser($email);
-                    $_SESSION['email'] = $unUser['email'];
-                    $_SESSION['mdp'] = $unUser['mdp'];
-                    if ($_SESSION['email'] == $email && $_SESSION['mdp'] == $mdp) {
+                    if ($unUser != null) {
+                        $_SESSION['email'] = $unUser['email'];
+                        $_SESSION['mdp'] = $unUser['mdp'];
+                        $_SESSION['role'] = $unUser['role'];
                         header("Location: index.php?page=0");
                     } else {
                         echo "<p style='text-align: center;'>Veuillez verifier vos emails !</p>";

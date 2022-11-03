@@ -272,7 +272,7 @@ class Modele
     }*/
     public function insertClientPar($tab)
     {
-        $requete = "call insertClientPar(:nom, :email, :mdp, :tel, :role, :prenom)";
+        $requete = "call insertClientPar(:nom, :email, :mdp, :tel, :role, :prenom);";
         $donnees = array(
             ":nom" => $tab['nom'],
             ":email" => $tab['email'],
@@ -289,7 +289,7 @@ class Modele
     }
     public function insertClientPro($tab)
     {
-        $requete = "call insertClientPro(:nom, :email, :mdp, :tel, :role, :num_Siret, :adresse)";
+        $requete = "call insertClientPro(:nom, :email, :mdp, :tel, :role, :num_Siret, :adresse);";
         $donnees = array(
             ":nom" => $tab['nom'],
             ":email" => $tab['email'],

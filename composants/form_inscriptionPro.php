@@ -28,16 +28,9 @@
             </tr>
             <tr>
                 <td><input class="boutonP" type="reset" name="Annuler" value="Annuler"></td>
-                <td><input class="boutonP" type="submit" name="Inscription" value="Inscription"></td>
+                <td><input class="boutonP" type="submit" name="InscriptionPro" value="Inscription"></td>
             </tr>';
-
-            <?php
-            if (isset($_POST['Inscription'])) {
-                echo $controleur->insertClientPro($_POST);
-            }
-            ?>
-
         </table>
     </form>
-
+  
 </main>

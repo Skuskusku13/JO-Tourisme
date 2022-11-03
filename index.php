@@ -89,7 +89,10 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
             break;
     }
     ?>
-    <?php require_once('footer.php'); ?>
+
+    <footer>
+        <?php require_once('footer.php'); ?>
+    </footer>
 </body>
 
 </html>
