@@ -416,3 +416,15 @@ create view vueCeremonies as (
     and e.idcategorie = 2
 );
 
+
+
+#-----------------------------------------------------------------
+# Creation d_une vue de services de la categorie loisir 
+#-----------------------------------------------------------------
+
+drop view if exists vueLoisirs;
+create view vueLoisirs as (
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	from Service s, Typeservice t
+	where t.idtypeservices = s.idtypeservices and t.idtypeservices = 4 or t.idtypeservices = 3
+);

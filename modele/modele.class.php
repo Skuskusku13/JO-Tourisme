@@ -307,6 +307,43 @@ class Modele
     }
 
 
+    public function selectAllHotels(){
+        $requete = "SELECT * FROM vueHotels;";
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($requete);
+            $select->execute();
+            return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+    public function selectAllRestaurants(){
+        $requete = "SELECT * FROM vueRestaurants;";
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($requete);
+            $select->execute();
+            return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+    public function selectAllLoisirs(){
+        $requete = "SELECT * FROM vueLoisirs;";
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($requete);
+            $select->execute();
+            return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+
     public function selectUser($email)
     {
         $requete = "SELECT * FROM user WHERE email=?";

@@ -149,6 +149,24 @@
             
         }
 
+        public function selectAllHotels(){
+            $lesHotels = $this->unModele->selectAllHotels();
+
+            return $lesHotels;
+        }
+
+        public function selectAllRestaurants(){
+            $lesRestaurants = $this->unModele->selectAllRestaurants();
+
+            return $lesRestaurants;
+        }
+
+        public function selectAllLoisirs(){
+            $lesSports = $this->unModele->selectAllLoisirs();
+
+            return $lesSports;
+        }
+
         
         public function selectUser($email){
             // on controle la validité des données 
