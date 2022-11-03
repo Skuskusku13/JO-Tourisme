@@ -24,6 +24,43 @@ h1, h2 {
     font-weight: 700;
 }
 
+/* navbar */
+
+.navigation_navbar {
+    background: linear-gradient(-90deg, rgba(156, 156, 156, 1) 0%, rgba(18, 103, 120, 0.9052214635854342) 38%, rgba(9, 58, 121, 0.9220281862745098) 80%);
+}
+
+.navigation_navbar ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+.navigation_navbar ul li {
+    padding: 5px;
+    list-style-type: none;
+    align-self: center;
+}
+
+.navigation_navbar ul li a {
+    color: aliceblue;
+    text-decoration: none;
+    font-size: 1.3em;
+    font-family: 'Paris2024', sans-serif;
+}
+
+.navigation_navbar .image-logo {
+    height: 80px;
+}
+
+.identification-nav {
+    color: aliceblue;
+    font-size: 1em;
+    font-family: 'Paris2024', sans-serif;
+    text-transform: uppercase;
+}
+
+/* fin navbar  */
+
 /* tables d'insertion */
 
 .table-insert{
@@ -94,44 +131,8 @@ h1, h2 {
     object-fit: cover;
 }
 
-
 /* fin home.php */
 
-
-
-/* index.php */
-
-/* navbar */
-
-.navigation_navbar {
-    background: linear-gradient(-90deg, rgba(156, 156, 156, 1) 0%, rgba(18, 103, 120, 0.9052214635854342) 38%, rgba(9, 58, 121, 0.9220281862745098) 80%);
-}
-
-.navigation_navbar ul {
-    display: flex;
-    justify-content: space-around;
-}
-
-.navigation_navbar ul li {
-    padding: 5px;
-    list-style-type: none;
-    align-self: center;
-}
-
-.navigation_navbar ul li a {
-    color: aliceblue;
-    text-decoration: none;
-    font-size: 1.3em;
-    font-family: 'Paris2024', sans-serif;
-}
-
-.navigation_navbar .image-logo {
-    height: 80px;
-}
-
-/* fin navbar  */
-
-/* fin index.php */
 
 
 /* footer */

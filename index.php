@@ -27,9 +27,7 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
     <main>
 
         <?php
-        if (!empty($_SESSION['email'])) {
-            echo "Bienvenue " . $_SESSION['email'] . " vous avez le rôle de : " . $_SESSION['role'];
-        }
+
         if (isset($_GET["page"])) {
             $page = $_GET["page"];
         } else {

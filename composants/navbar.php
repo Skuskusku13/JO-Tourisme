@@ -30,5 +30,13 @@
             ?>
 
         </li>
+        <?php
+        if (!empty($_SESSION['email'])) {
+            echo '<li>';
+            echo "<p class='identification-nav'>" . $_SESSION['email'] . " / " . $_SESSION['role']."</p>";
+            echo '</li>';
+        }
+
+        ?>
     </ul>
 </nav>

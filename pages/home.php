@@ -1,28 +1,19 @@
-<main>
+<?php
+require_once("composants/carroussel-home.php");
 
-    <h1 class="titre-principal"> Bienvenue sur notre site pour les Jeux Olympiques 2024</h1>
+    if(isset($_POST['Hotels'])){
+        echo "Hotels";
+        // require_once("composants/form_inscriptionPro.php");
+    }
 
-    <div class="carroussel-image">
-        <div class="carroussel-image-relative">
-            <a href="#">
-                <img class="image-accueil" src="images/hotel.png" alt="Hotel de paris">
-                <p class="desc-image">Vous retrouverez tous les hotels ici !</p>
-            </a>
-        </div>
+    if(isset($_POST['Restaurants'])){
+        echo "Restaurants";
+        // require_once("composants/");
+    }
 
-        <div class="carroussel-image-relative">
-            <a href="#">
-                <img class="image-accueil" src="images/restaurant.png" alt="Restaurant de paris">
-                <p class="desc-image">Vous retrouverez tous les restaurants ici !</p>
-            </a>
-        </div>
+    if(isset($_POST['Loisirs'])){
+        echo "Loisirs";
+        // require_once("composants/");
+    }
 
-        <div class="carroussel-image-relative">
-            <a href="#">
-                <img class="image-accueil" src="images/loisir.png" alt="Loisirs">
-                <p class="desc-image">Vous retrouverez tous les loisirs ici !</p>
-            </a>
-        </div>
-    </div>
-</main>
-
+?>
