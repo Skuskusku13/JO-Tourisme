@@ -392,43 +392,6 @@ create view vueSport as (
 	where s.idtypeservices = t.idtypeservices
     and s.idtypeservices = 4
 );
-
-#-----------------------------------------------------------------
-# Creation d_une vue de services de la categorie Hotels
-#-----------------------------------------------------------------
-
-drop view if exists vueHotels;
-create view vueHotels as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
-	from Service s, Typeservice t
-	where s.idtypeservices = t.idtypeservices
-    and s.idtypeservices = 1
-);
-
-#-----------------------------------------------------------------
-# Creation d_une vue de services de la categorie restaurant et bar
-#-----------------------------------------------------------------
-
-drop view if exists vueRestaurants;
-create view vueRestaurants as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
-	from Service s, Typeservice t
-	where s.idtypeservices = t.idtypeservices
-    and s.idtypeservices = 2
-);
-
-#-----------------------------------------------------------------
-# Creation d_une vue de services de la categorie Culture 
-#-----------------------------------------------------------------
-
-drop view if exists vueCulture;
-create view vueCulture as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
-	from Service s, Typeservice t
-	where s.idtypeservices = t.idtypeservices
-    and s.idtypeservices = 3
-);
-
 #-----------------------------------------------------------------
 # Creation d_une vue des Evenements de la categorie Epreuves 
 #-----------------------------------------------------------------
@@ -442,7 +405,7 @@ create view vueEpreuves as (
 );
 
 #-----------------------------------------------------------------
-# Creation d_une vue des Evenements de la categorie Epreuves 
+# Creation d_une vue des Evenements de la categorie Ceremonies 
 #-----------------------------------------------------------------
 
 drop view if exists vueCeremonies;
