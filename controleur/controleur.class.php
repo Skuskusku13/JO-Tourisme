@@ -174,6 +174,10 @@
             
         }
 
+        public function findByRole($role, $iduser)
+        {
+            return $this->unModele->findByRole($role, $iduser);
+        }
 
     }
 

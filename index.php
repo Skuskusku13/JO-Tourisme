@@ -53,7 +53,7 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
                 require_once("pages/deconnexion.php");
                 break;
             case 6:
-                require_once("pages/monprofil.php");
+                require_once("pages/profil.php");
                 break;
         }
         ?>

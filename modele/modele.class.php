@@ -357,4 +357,21 @@ class Modele
             return null;
         }
     }
+
+    public function findByRole($role, $iduser)
+    {
+        // requête sql avec un WHERE, ça sera un fetch et non pas fetchAll
+        $requete = "SELECT * FROM user WHERE role=? AND iduser=?";
+        if ($this->pdo != null) {
+            //  appel pdo avec la méthode prepare($sql) -> a mettre dans unevariable ex: select
+            $select  = $this->pdo->prepare($requete);
+            $donnees = array($role, $iduser); 
+            var_dump($donnees);
+            $select->execute($donnees);
+            return $select->fetch();
+        } else {
+            return null;
+        }
+    }
+  
 }
