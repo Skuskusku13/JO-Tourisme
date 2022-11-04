@@ -115,6 +115,7 @@ CREATE TABLE Service
     prix           Float NOT NULL ,
     tel            Varchar (50) NOT NULL ,
     email          Varchar (50) NOT NULL ,
+    image          Varchar (200),
     idtypeservices Int NOT NULL,
     PRIMARY KEY (idservice),
     FOREIGN KEY (idtypeservices) REFERENCES Typeservice(idtypeservices)
@@ -319,18 +320,18 @@ insert into Typeservice values (NULL, "Sport");
 #--------------------------------------------------------
 
 insert into Service values  
-        (NULL, "Novotel Paris Vaugirart", "257 Rue de Vaugirard", 200, "0155689745", "NovotelVaugirard@gmail.com", 01),
-        (NULL, "Hotel Molitor", "13 Rue Nungesser et Coli", 500, "0158451275", "HotelMolitor@gmail.com", 01),
-        (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", 01),
-        (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", 02),
-        (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", 02),
-        (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", 02),
-        (NULL, "Musée Du Louvre", "1 Rue de Rivoli ", 20, "0188451236", "Musée-louvre@gmail.com", 03),
-        (NULL, "Cinéma Pathé Opéra", "32 Rue Louis le Grand", 20, "0188584712", "Cinémapathé@gmail.com", 03),
-        (NULL, "Muséum d'Histoire naturelle", "57 Rue Cuvier", 20, "015689521", "MuséH-Naturelle@gmail.com", 03),
-        (NULL, "Fitness Park", "65 Rue de Bagnolet", 20, "0185496285", "Fitness20@gmail.com", 04),
-        (NULL, "Picine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", 04),
-        (NULL, "Basic-Fit", "58 Av. Philippe Auguste", 20, "0145879254", "Basic-Fit@gmail.com", 04);
+        (NULL, "Novotel Paris Vaugirart", "257 Rue de Vaugirard", 200, "0155689745", "NovotelVaugirard@gmail.com", "novotel_paris_vaugirard.png",01),
+        (NULL, "Hotel Molitor", "13 Rue Nungesser et Coli", 500, "0158451275", "HotelMolitor@gmail.com", "hotel_molitor.png", 01),
+        (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", "hotel_f1.png", 01),
+        (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", "", 02),
+        (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", "", 02),
+        (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", "", 02),
+        (NULL, "Musée Du Louvre", "1 Rue de Rivoli ", 20, "0188451236", "Musée-louvre@gmail.com", "", 03),
+        (NULL, "Cinéma Pathé Opéra", "32 Rue Louis le Grand", 20, "0188584712", "Cinémapathé@gmail.com", "", 03),
+        (NULL, "Muséum d'Histoire naturelle", "57 Rue Cuvier", 20, "015689521", "MuséH-Naturelle@gmail.com", "", 03),
+        (NULL, "Fitness Park", "65 Rue de Bagnolet", 20, "0185496285", "Fitness20@gmail.com", "", 04),
+        (NULL, "Picine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", "", 04),
+        (NULL, "Basic-Fit", "58 Av. Philippe Auguste", 20, "0145879254", "Basic-Fit@gmail.com", "", 04);
 
 #---------------------------------------------------------
 # insertion de Evenement dans la table Evenement
@@ -351,7 +352,7 @@ insert into Evenement values
 
 drop view if exists vueHotels;
 create view vueHotels as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email, s.image
 	from Service s, Typeservice t
 	where s.idtypeservices = t.idtypeservices
     and s.idtypeservices = 1
