@@ -1,26 +1,16 @@
     <h2> Liste des Hotels </h2>
 
-    <table class="table-affiche">
-        <tr>
-            <td> Catégorie </td>
-            <td> Libellé </td>
-            <td> Adresse </td>
-            <td> Prix </td>
-            <td> Téléphone </td>
-            <td> Email </td>
-        </tr>
-
+    <table class="affiche-hotel">
         <?php
             foreach($lesHotels as $unHotel){
+            
                 echo 
                     "<tr>
-                        <td>".$unHotel["Categorie"]."</td>",
-                        "<td>".$unHotel["libelle"]."</td>",
-                        "<td>".$unHotel["adresse"]."</td>",
-                        "<td>".$unHotel["prix"]."</td>",
-                        "<td>".$unHotel["tel"]."</td>",
-                        "<td>".$unHotel["email"]."</td>";
-                echo "</tr>";
+                        <td><img class='images-hotel' src='images/imagesSQL/".$unHotel["image"]."' alt=''></td>",
+                        "<td> <p class='libelle'>".$unHotel["libelle"]."</p><p class='adresse'>".$unHotel['adresse']."</p><p class='email'> ".$unHotel['email']."</p><p class='tel'> ".$unHotel['tel']."</p>",
+                        "<td>".$unHotel["prix"]." €</td>",
+                        "<td><input class='reservation' type='submit' name='reserver' value='Réserver'></td>",
+                "</tr>";
             }
         ?>
     </table>

@@ -173,3 +173,65 @@ footer {
 }
 
 /* fin footer */
+
+
+
+/*  affiche hotel */
+.affiche-hotel {
+    margin: 0 auto;
+}
+
+.affiche-hotel tr:hover {
+    background-color: #A8E7FD;
+}
+
+.affiche-hotel td {
+    /* border: 1px solid black; */
+    padding: 5px 5px;
+    text-align: center;
+    font-family: 'Paris2024', sans-serif;
+    /* border-radius: 10px; */
+}
+
+
+.libelle::before {
+    content: url(images/logo-libe.png);
+    padding: 0 10px;
+}
+
+.adresse::before {
+    content: url(images/logo-hotel.png);
+    padding: 0 10px;
+}
+
+.email::before {
+    content: url(images/logo-email.png);
+    padding: 0 10px;
+}
+
+.tel::before {
+    content: url(images/logo-tel.png);
+    padding: 0 10px;
+}
+
+.libelle, .adresse, .email, .tel {
+    margin: 10px 0;
+}
+
+.reservation {
+    background-color: rgb(84, 84, 207);
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: 'Paris2024', sans-serif;
+    text-transform: uppercase;
+    color: aliceblue;
+}
+
+.images-hotel {
+    margin: 30px 0;
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+}
+/*  fin affiche hotel */
