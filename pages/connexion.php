@@ -31,6 +31,7 @@ $controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
                         $_SESSION['email'] = $unUser['email'];
                         $_SESSION['mdp'] = $unUser['mdp'];
                         $_SESSION['role'] = $unUser['role'];
+                        $_SESSION['iduser'] = $unUser['iduser'];
                         header("Location: index.php?page=0");
                     } else {
                         echo "<p style='text-align: center;'>Veuillez verifier vos emails !</p>";
