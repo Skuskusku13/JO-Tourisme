@@ -23,21 +23,15 @@ $controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
             </tr>
             <?php
             if (isset($_POST['seConnecter'])) {
-                if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
-                    $email = $_POST['email'];
-                    $mdp = $_POST['mdp'];
-                    $unUser = $controleur->selectUser($email, $mdp);
-                    if ($unUser != null) {
-                        $_SESSION['nom'] = $unUser['nom'];
-                        $_SESSION['email'] = $unUser['email'];
-                        $_SESSION['role'] = $unUser['role'];
-                        $_SESSION['iduser'] = $unUser['iduser'];
-                        header("Location: index.php?page=0");
-                    } else {
-                        echo "<p style='text-align: center;'>Veuillez verifier vos emails !</p>";
-                    }
-                } else {
-                    echo "<p style='text-align: center;'>Les champs ne sont pas remplis</p>";
+                $email = $_POST['email'];
+                $mdp = $_POST['mdp'];
+                $unUser = $controleur->selectUser($email, $mdp);
+                if ($unUser != null) {
+                    $_SESSION['nom'] = $unUser['nom'];
+                    $_SESSION['email'] = $unUser['email'];
+                    $_SESSION['role'] = $unUser['role'];
+                    $_SESSION['iduser'] = $unUser['iduser'];
+                    header("Location: index.php?page=0");
                 }
             }
 

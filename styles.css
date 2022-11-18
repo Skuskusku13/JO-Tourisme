@@ -177,15 +177,15 @@ footer {
 
 
 /*  affiche hotel */
-.affiche-hotel {
+.affiche-tab {
     margin: 0 auto;
 }
 
-.affiche-hotel tr:hover {
+.affiche-tab tr:hover {
     background-color: #A8E7FD;
 }
 
-.affiche-hotel td {
+.affiche-tab td {
     /* border: 1px solid black; */
     padding: 5px 5px;
     text-align: center;

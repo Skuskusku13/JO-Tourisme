@@ -331,13 +331,51 @@ class Modele
         }
     }
 
-    public function selectAllLoisirs(){
-        $requete = "SELECT * FROM vueLoisirs;";
+    public function selectAllSports(){
+        $requete = "SELECT * FROM vueSport;";
         if ($this->pdo != null) {
             //on prepare la requete
             $select = $this->pdo->prepare($requete);
             $select->execute();
             return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+    public function selectAllCultures(){
+        $requete = "SELECT * FROM vueCulture;";
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($requete);
+            $select->execute();
+            return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+    public function selectAllLoisirs(){
+        $requete = "SELECT * FROM vueCulture;";
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($requete);
+            $select->execute();
+            return $select->fetchAll();
+        } else {
+            return null;
+        }
+    }
+
+    public function checkUser($email) {
+        $req = "SELECT * FROM user WHERE email=:email;";
+        $donnees = array(
+            ":email" => $email,
+        );
+        if($this->pdo != null) {
+            $select = $this->pdo->prepare($req);
+            $select->execute($donnees);
+            return $select->fetch();
         } else {
             return null;
         }
@@ -366,7 +404,6 @@ class Modele
             //  appel pdo avec la méthode prepare($sql) -> a mettre dans unevariable ex: select
             $select  = $this->pdo->prepare($requete);
             $donnees = array($role, $iduser); 
-            var_dump($donnees);
             $select->execute($donnees);
             return $select->fetch();
         } else {

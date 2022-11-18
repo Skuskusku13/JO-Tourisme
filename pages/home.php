@@ -6,7 +6,8 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 
 $lesHotels = $unControleur->selectAllHotels();
 $lesRestaurants = $unControleur->selectAllRestaurants();
-$lesLoisirs = $unControleur->selectAllLoisirs();
+$lesSports = $unControleur->selectAllSports();
+$lesCultures = $unControleur->selectAllCultures();
 
 require_once("composants/carroussel-home.php");
 
@@ -22,7 +23,8 @@ require_once("composants/carroussel-home.php");
 
     if(isset($_POST['Loisirs'])){
         require_once("vue/vue_les_loisirs.php");
-        $unControleur->selectAllLoisirs();
+        $unControleur->selectAllSports();
+        $unControleur->selectAllCultures();
     }
 
 ?>

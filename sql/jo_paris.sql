@@ -319,18 +319,23 @@ insert into Typeservice values (NULL, "Sport");
 # insertion de Service dans la table Service
 #--------------------------------------------------------
 
-insert into Service values  
+-- hotel
+insert INTO Service values  
         (NULL, "Novotel Paris Vaugirart", "257 Rue de Vaugirard", 200, "0155689745", "NovotelVaugirard@gmail.com", "novotel_paris_vaugirard.png",01),
         (NULL, "Hotel Molitor", "13 Rue Nungesser et Coli", 500, "0158451275", "HotelMolitor@gmail.com", "hotel_molitor.png", 01),
-        (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", "hotel_f1.png", 01),
-        (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", "", 02),
-        (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", "", 02),
-        (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", "", 02),
+        (NULL, "Hotel F1 Paris St Ouen", "29 Ruz Docteur Babinski ", 43, "0181247956", "HotelF1@gmail.com", "hotel_f1.png", 01);
+-- restaurant 
+INSERT INTO Service values
+        (NULL, "Le bouillon Chartier", "7 Rue du Faubourg Montmartre", 25, "0185695864", "bouillonChartier@gmail.com", "bouillon-chartier.png", 02),
+        (NULL, "L'alchimiste", "9 Rue Nicolas Flamelle", 10, "0158851474", "Lalchimist@gmail.com", "alchimiste.png", 02),
+        (NULL, "Le train bleu", "Place Louis Armand", 60, "015887834", "Letrainbleu@gmail.com", "le-train-bleu.png", 02);
+-- loisir 
+INSERT INTO Service values
         (NULL, "Musée Du Louvre", "1 Rue de Rivoli ", 20, "0188451236", "Musée-louvre@gmail.com", "", 03),
         (NULL, "Cinéma Pathé Opéra", "32 Rue Louis le Grand", 20, "0188584712", "Cinémapathé@gmail.com", "", 03),
         (NULL, "Muséum d'Histoire naturelle", "57 Rue Cuvier", 20, "015689521", "MuséH-Naturelle@gmail.com", "", 03),
         (NULL, "Fitness Park", "65 Rue de Bagnolet", 20, "0185496285", "Fitness20@gmail.com", "", 04),
-        (NULL, "Picine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", "", 04),
+        (NULL, "Piscine Paris", "4 Rue Louis Armand", 7, "0181687415", "Picineparis@gmail.com", "", 04),
         (NULL, "Basic-Fit", "58 Av. Philippe Auguste", 20, "0145879254", "Basic-Fit@gmail.com", "", 04);
 
 #---------------------------------------------------------
@@ -364,7 +369,7 @@ create view vueHotels as (
 
 drop view if exists vueRestaurants;
 create view vueRestaurants as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email, s.image
 	from Service s, Typeservice t
 	where s.idtypeservices = t.idtypeservices
     and s.idtypeservices = 2
@@ -376,7 +381,7 @@ create view vueRestaurants as (
 
 drop view if exists vueCulture;
 create view vueCulture as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email, s.image
 	from Service s, Typeservice t
 	where s.idtypeservices = t.idtypeservices
     and s.idtypeservices = 3
@@ -388,7 +393,7 @@ create view vueCulture as (
 
 drop view if exists vueSport;
 create view vueSport as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email, s.image
 	from Service s, Typeservice t
 	where s.idtypeservices = t.idtypeservices
     and s.idtypeservices = 4
@@ -425,7 +430,7 @@ create view vueCeremonies as (
 
 drop view if exists vueLoisirs;
 create view vueLoisirs as (
-	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email
+	select t.libelle as Categorie, s.libelle, s.adresse, s.prix, s.tel, s.email, s.image
 	from Service s, Typeservice t
 	where t.idtypeservices = s.idtypeservices and t.idtypeservices = 4 or t.idtypeservices = 3
 );

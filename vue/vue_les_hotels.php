@@ -1,6 +1,6 @@
     <h2> Liste des Hotels </h2>
 
-    <table class="affiche-hotel">
+    <table class="affiche-tab">
         <?php
             foreach($lesHotels as $unHotel){
             
