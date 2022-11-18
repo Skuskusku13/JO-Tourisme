@@ -3,7 +3,12 @@
 // on récupère notre user qui a le rôle professionnel ou particulier en se servant de la variable de session
 $unUser = $unControleur->findByRole($_SESSION['role'], $_SESSION['iduser']);
 
-var_dump($unUser);
+$unClientPart=null;
+$unClientPro=null;
 
-echo "eeeeeeeeeee";
+if($unUser['role'] == 'clientPro') {
+    require_once("vue/vue_les_profilsPro.php");
+} else if($unUser['role'] == 'clientPart') {
+    require_once("vue/vue_les_profilsPart.php");
+}
 ?>
