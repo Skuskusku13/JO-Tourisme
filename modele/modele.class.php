@@ -9,7 +9,7 @@ class Modele
 
         try {
             //code qui peut poser des erreurs
-            $this->pdo = new PDO("mysql:host=" . $serveur2 . ";dbname=" . $bdd, $user, $mdp2);
+            $this->pdo = new PDO("mysql:host=" . $serveur2 . ";charset=UTF8; dbname=" . $bdd, $user, $mdp2);
         
         } catch (PDOException $exp) {
             try {
