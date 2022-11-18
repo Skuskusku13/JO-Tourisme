@@ -12,11 +12,11 @@
     <?php
             echo 
                 "<tr>
-                    <td>" .$unClientPart["nom"]."</td>",
-                    "<td>".$unClientPart["prenom"]."</td>",
-                    "<td>".$unClientPart["email"]."</td>",
-                    "<td>".$unClientPart["mdp"]."</td>",
-                    "<td>".$unClientPart["tel"]."</td>";
+                    <td>" .$_SESSION["nom"]."</td>",
+                    "<td>".$_SESSION["prenom"]."</td>",
+                    "<td>".$_SESSION["email"]."</td>",
+                    "<td>".$_SESSION["mdp"]."</td>",
+                    "<td>".$_SESSION["tel"]."</td>";
             echo "</tr>";
     ?>
 </table>
