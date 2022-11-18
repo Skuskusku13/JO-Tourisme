@@ -26,13 +26,10 @@ $controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
                 if (!empty($_POST['email']) && !empty($_POST['mdp'])) {
                     $email = $_POST['email'];
                     $mdp = $_POST['mdp'];
-                    $unUser = $controleur->selectUser($email);
+                    $unUser = $controleur->selectUser($email, $mdp);
                     if ($unUser != null) {
                         $_SESSION['nom'] = $unUser['nom'];
-                        $_SESSION['prenom'] = $unUser['prenom'];
-                        $_SESSION['tel'] = $unUser['tel'];
                         $_SESSION['email'] = $unUser['email'];
-                        $_SESSION['mdp'] = $unUser['mdp'];
                         $_SESSION['role'] = $unUser['role'];
                         $_SESSION['iduser'] = $unUser['iduser'];
                         header("Location: index.php?page=0");

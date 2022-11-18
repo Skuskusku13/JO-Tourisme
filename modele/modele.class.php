@@ -344,13 +344,13 @@ class Modele
     }
 
 
-    public function selectUser($email)
+    public function selectUser($email, $mdp)
     {
-        $requete = "SELECT * FROM user WHERE email=?";
+        $requete = "SELECT * FROM user WHERE email=? AND mdp=?";
         if ($this->pdo != null) {
             // on prépare la requete 
             $select  = $this->pdo->prepare($requete);
-            $select->execute(array($email));
+            $select->execute(array($email, $mdp));
             //extraction de tous les clients
             return $select->fetch();
         } else {
@@ -373,5 +373,31 @@ class Modele
             return null;
         }
     }
-  
+    public function selectClientPro($email)
+    {
+        $requete = "SELECT * FROM vueClientPro WHERE email=?";
+        if ($this->pdo != null) {
+            // on prépare la requete 
+            $select  = $this->pdo->prepare($requete);
+            $select->execute(array($email));
+            //extraction de tous les clients
+            return $select->fetch();
+        } else {
+            return null;
+        }
+    }
+    public function selectClientPart($email)
+    {
+        $requete = "SELECT * FROM vueClientPart WHERE email=?";
+        if ($this->pdo != null) {
+            // on prépare la requete 
+            $select  = $this->pdo->prepare($requete);
+            $select->execute(array($email));
+            //extraction de tous les clients
+            return $select->fetch();
+        } else {
+            return null;
+        }
+    }
+
 }

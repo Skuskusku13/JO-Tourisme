@@ -429,3 +429,24 @@ create view vueLoisirs as (
 	from Service s, Typeservice t
 	where t.idtypeservices = s.idtypeservices and t.idtypeservices = 4 or t.idtypeservices = 3
 );
+#-----------------------------------------------------------------
+# Creation d_une vue de user Part
+#-----------------------------------------------------------------
+
+drop view if exists vueClientPart;
+create view vueClientPart as (
+	select u.nom, c.prenom, u.email, u.mdp, u.tel
+	from user u, Client_Particulier c
+	where u.iduser = c.iduser
+);
+
+#-----------------------------------------------------------------
+# Creation d_une vue de user Pro
+#-----------------------------------------------------------------
+
+drop view if exists vueClientPro;
+create view vueClientPro as (
+	select u.nom, u.email, u.mdp, u.tel, c.num_Siret, c.adresse
+	from user u, Client_Pro c
+	where u.iduser = c.iduser
+);

@@ -168,9 +168,9 @@
         }
 
         
-        public function selectUser($email){
+        public function selectUser($email, $mdp){
             // on controle la validité des données 
-           return $this->unModele->selectUser($email);
+           return $this->unModele->selectUser($email, $mdp);
             
         }
 
@@ -178,7 +178,17 @@
         {
             return $this->unModele->findByRole($role, $iduser);
         }
-
+        
+        public function selectClientPart($email){
+            $unClientPart = $this->unModele->selectClientPart($email);
+            return $unClientPart;
+            
+        }
+        
+        public function selectClientPro($email){
+            $unClientPro = $this->unModele->selectClientPro($email);
+            return $unClientPro;
+        }
     }
 
 ?>
