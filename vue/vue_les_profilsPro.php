@@ -11,7 +11,6 @@
     </tr>
 
     <?php
-        foreach($lesClientsPros as $unClientPro){
             echo 
                 "<tr>
                     <td>" .$unClientPro["nom"]."</td>",
@@ -21,7 +20,6 @@
                     "<td>".$unClientPro["num_Siret"]."</td>",
                     "<td>".$unClientPro["adresse"]."</td>";
             echo "</tr>";
-        }
     ?>
 </table>
 </main> 

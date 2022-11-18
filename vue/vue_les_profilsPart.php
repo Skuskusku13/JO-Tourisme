@@ -10,7 +10,6 @@
     </tr>
 
     <?php
-        foreach($lesClientsParts as $unClientPart){
             echo 
                 "<tr>
                     <td>" .$unClientPart["nom"]."</td>",
@@ -19,7 +18,6 @@
                     "<td>".$unClientPart["mdp"]."</td>",
                     "<td>".$unClientPart["tel"]."</td>";
             echo "</tr>";
-        }
     ?>
 </table>
 </main> 
