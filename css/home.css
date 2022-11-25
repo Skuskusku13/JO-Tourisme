@@ -11,6 +11,7 @@ button {
 
 .carroussel-image, .image-accueil {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     margin: 5px;
@@ -22,6 +23,7 @@ button {
 
 .carroussel-image-relative {
     position: relative;
+    width: max-content;
 }
 
 .carroussel-image-relative .desc-image {

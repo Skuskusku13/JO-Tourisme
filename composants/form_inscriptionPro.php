@@ -4,19 +4,19 @@
         <table class="table-insert">
             <tr>
                 <td>Nom : </td>
-                <td class="tdtd"><input type="text" name="nom"></td>
+                <td class="tdtd"><input type="text" name="nom" id="nom" onblur="traiterNom()"></td>
             </tr>
             <tr>
                 <td>Email : </td>
-                <td class="tdtd"><input type="text" name="email"></td>
+                <td class="tdtd"><input type="text" name="email" id="email" onblur="traiterEmail()"></td>
             </tr>
             <tr>
                 <td>Mot de passe : </td>
-                <td class="tdtd"><input type="password" name="mdp"></td>
+                <td class="tdtd"><input type="password" name="mdp" id="mdp" onblur="traiterMdp()"></td>
             </tr>
             <tr>
                 <td>Tél : </td>
-                <td class="tdtd"><input type="text" name="tel"></td>
+                <td class="tdtd"><input type="text" name="tel" id="tel" onblur="traiterTel()"></td>
             </tr>
             <tr>
                 <td>Numéro Siret : </td>

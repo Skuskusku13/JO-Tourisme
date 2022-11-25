@@ -142,7 +142,7 @@ class Controleur
         foreach ($tab as $cle => $value) {
             $tab[$cle] = trim(htmlspecialchars($tab[$cle]));
             if ($value == "") {
-                echo "<p style='text-align: center;'>Veuillez remplir tous les champs</p>";
+
                 return null;
             }
         }
