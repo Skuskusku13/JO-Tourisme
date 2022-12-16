@@ -11,7 +11,7 @@ button {
 
 .carroussel-image, .image-accueil {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: center;
     margin: 5px;
