@@ -1,8 +1,8 @@
 <?php
-            $lesTypeservices = $unControleur->selectALLTypeservices();
+            $lesTypeservices = $c_TypeService->selectALLTypeservices();
             require_once("vue/vue_insert_typeservice.php");
             if(isset($_POST['Valider']))
             {
-                $unControleur->insertTypeservice($_POST);
+                $c_TypeService->insertTypeservice($_POST);
             }
 ?>

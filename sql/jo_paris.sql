@@ -54,7 +54,7 @@ CREATE TABLE Client_Particulier
 CREATE TABLE Categorie
 (
     idcategorie Int (3) NOT NULL auto_increment,
-    libelle     Text NOT NULL ,
+    libelle     text NOT NULL ,
     PRIMARY KEY (idcategorie)
 );
 
@@ -440,7 +440,7 @@ create view vueLoisirs as (
 
 drop view if exists vueClientPart;
 create view vueClientPart as (
-	select u.nom, c.prenom, u.email, u.mdp, u.tel
+	select u.iduser, u.nom, c.prenom, u.email, u.mdp, u.tel, u.role
 	from user u, Client_Particulier c
 	where u.iduser = c.iduser
 );
@@ -451,7 +451,7 @@ create view vueClientPart as (
 
 drop view if exists vueClientPro;
 create view vueClientPro as (
-	select u.nom, u.email, u.mdp, u.tel, c.num_Siret, c.adresse
+	select u.iduser, u.nom, u.email, u.mdp, u.tel, u.role, c.num_Siret, c.adresse
 	from user u, Client_Pro c
 	where u.iduser = c.iduser
 );

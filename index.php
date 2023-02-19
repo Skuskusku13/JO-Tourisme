@@ -1,9 +1,17 @@
 <?php
 session_start();
-require_once("controleur/controleur.class.php");
+require_once("controleur/controleurCategorie.class.php");
+require_once("controleur/controleurEvent.class.php");
+require_once("controleur/controleurService.class.php");
+require_once("controleur/controleurTypeService.class.php");
+require_once("controleur/controleurUser.class.php");
 require_once("controleur/config_bdd.php");
 // instanciation du controleur 
-$unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_Categories = new ControleurCategorie($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_Event = new ControleurEvent($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_Service = new ControleurService($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_TypeService = new ControleurTypeService($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_User = new ControleurUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 
 ?>
 
@@ -29,11 +37,8 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 
         <?php
 
-        if (isset($_GET["page"])) {
-            $page = $_GET["page"];
-        } else {
-            $page = 0;
-        }
+        $page = $_GET['page'] ? $_GET['page'] : 0;
+        
         switch ($page) {
             case 0:
                 require_once("pages/home.php");
@@ -65,7 +70,7 @@ $unControleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
     </footer>
 
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>

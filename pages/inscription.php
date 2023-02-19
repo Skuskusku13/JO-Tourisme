@@ -1,6 +1,6 @@
 <?php
-require_once("controleur/controleur.class.php");
-$controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+require_once("controleur/controleurUser.class.php");
+$controleur = new ControleurUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 ?>
 
 <br>

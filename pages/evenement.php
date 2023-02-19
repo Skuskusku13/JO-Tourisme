@@ -1,6 +1,7 @@
 <?php
-$lesCategories = $unControleur->selectALLCategories();
-$lesEvenements = $unControleur->selectAllEvenements();
+
+$lesCategories = $c_Categories->selectAllCategories();
+$lesEvenements = $c_Event->selectAllEvenements();
 
 
 $lEvenement = null;
@@ -9,10 +10,10 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
     $idevenement = $_GET['idevenement'];
     switch ($action) {
         case "sup":
-            $unControleur->deleteEvenement($idevenement);
+            $c_Event->deleteEvenement($idevenement);
             break;
         case "edit":
-            $lEvenement = $unControleur->selectWhereEvenement($idevenement);
+            $lEvenement = $c_Event->selectWhereEvenement($idevenement);
             break;
     }
 }
@@ -20,15 +21,13 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
 
 require_once("vue/vue_insert_evenement.php");
 if (isset($_POST['Valider'])) {
-    #if (!empty($_POST['description']) && !empty($_POST['dateinter']) && !empty($_POST['prix']) && !empty($_POST['idtechnicien']) && !empty($_POST['idvehicule'])) 
-    $unControleur->insertEvenement($_POST);
+    $c_Event->insertEvenement($_POST);
 }
 
-if(isset($_POST['Modifier']))
-        {
-            $unControleur->updateEvenement($_POST);
-            header("Location: index.php?page=1");
-        } 
+if (isset($_POST['Modifier'])) {
+    $c_Event->updateEvenement($_POST);
+    header("Location: index.php?page=1");
+}
 
-$lesEvenements = $unControleur->selectAllEvenements();
+$lesEvenements = $c_Event->selectAllEvenements();
 require_once("vue/vue_les_evenements.php");

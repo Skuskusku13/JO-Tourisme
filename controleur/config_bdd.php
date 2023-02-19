@@ -7,7 +7,5 @@
 
     //Connex BDD PC
     $serveur2 = "localhost";
-    $bdd = "jo_paris";
-    $user = "root";
     $mdp2 = "";
 ?>

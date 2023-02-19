@@ -1,7 +1,6 @@
 <?php
-$lesTypeservices = $unControleur->selectALLTypeservices();
-
-$lesServices = $unControleur->selectAllServices();
+$lesTypeservices = $c_TypeService->selectAllTypeservices();
+$lesServices = $c_Service->selectAllServices();
 
 $leService = null;
     if (isset($_GET['action']) and isset($_GET['idservice']))
@@ -10,10 +9,10 @@ $leService = null;
         $idservice = $_GET['idservice'];
         switch ($action)
         {
-            case "sup":$unControleur->deleteService($idservice);
+            case "sup":$c_Service->deleteService($idservice);
             break;
             case "edit":
-            $leService = $unControleur->selectWhereService($idservice);
+            $leService = $c_Service->selectWhereService($idservice);
             break;
         }
     }
@@ -21,15 +20,13 @@ $leService = null;
 require_once("vue/vue_insert_service.php");
 if (isset($_POST['Valider'])) 
 {
-    #if (!empty($_POST['description']) && !empty($_POST['dateinter']) && !empty($_POST['prix']) && !empty($_POST['idtechnicien']) && !empty($_POST['idvehicule'])) 
-    $unControleur->insertService($_POST);
-    //var_dump($insertService);
+    $c_Service->insertService($_POST);
 }
 if(isset($_POST['Modifier']))
         {
-            $unControleur->updateService($_POST);
+            $c_Service->updateService($_POST);
             header("Location: index.php?page=2");
         }   
 
-$lesServices = $unControleur->selectAllServices();
+$lesServices = $c_Service->selectAllServices();
 require_once("vue/vue_les_services.php");

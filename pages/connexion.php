@@ -1,9 +1,3 @@
-<?php
-require_once("controleur/controleur.class.php");
-$controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
-
-?>
-
 
 <main>
     <form method="post" action="#" class="form_connex" autocomplete="off">
@@ -25,7 +19,7 @@ $controleur = new Controleur($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
             if (isset($_POST['seConnecter'])) {
                 $email = $_POST['email'];
                 $mdp = $_POST['mdp'];
-                $unUser = $controleur->selectUser($email, $mdp);
+                $unUser = $c_User->selectUser($email, $mdp);
                 if ($unUser != null) {
                     $_SESSION['nom'] = $unUser['nom'];
                     $_SESSION['email'] = $unUser['email'];

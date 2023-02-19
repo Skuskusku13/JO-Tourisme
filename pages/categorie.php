@@ -1,8 +1,8 @@
 <?php
-            $lesCategrories = $unControleur->selectALLCategories();
+            $lesCategrories = $c_Categories->selectALLCategories();
             require_once("vue/vue_insert_categorie.php");
             if(isset($_POST['Valider']))
             {
-                $unControleur->insertCategorie($_POST);
+                $c_Categories->insertCategorie($_POST);
             }
 ?>
