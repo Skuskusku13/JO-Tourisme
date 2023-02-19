@@ -37,7 +37,7 @@ $c_User = new ControleurUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 
         <?php
 
-        $page = $_GET['page'] ? $_GET['page'] : 0;
+        isset($_GET['page']) ? $page =  $_GET['page'] : $page = 0;
         
         switch ($page) {
             case 0:
