@@ -7,10 +7,15 @@
     box-sizing: border-box;
 }
 
+:root {
+    --cursor-logo: url("images/torche.png"), auto;
+    --cursor-logo-pointer: url("images/test.png"), pointer;
+}
 
 body {
     min-height: 100vh;
     position: relative;
+    cursor:  var(--cursor-logo);
 }
 
 main {
@@ -42,6 +47,7 @@ h1, h2 {
 }
 
 .navigation_navbar ul li a {
+    cursor: var(--cursor-logo-pointer);
     color: aliceblue;
     text-decoration: none;
     font-size: 1.3em;

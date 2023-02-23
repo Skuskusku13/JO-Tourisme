@@ -1,22 +1,13 @@
 <?php
+require_once("modele/modeleMere.class.php");
+
 class ModeleCategorie {
 
     private $pdo;
 
     public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
     {
-        $this->pdo = null;
-
-        try {
-            $this->pdo = new PDO("mysql:host=".$serveur.";charset=UTF8; dbname=".$bdd, $user, $mdp);
-        } catch(PDOException $exp) {
-            try {
-                $this->pdo = new PDO("mysql:host=".$serveur2."; charset=UTF8; dbname=".$bdd, $user, $mdp2);
-            } catch(PDOException $exp) {
-                echo "Erreur de connexion à la base de données";
-                echo $exp->getMessage();
-            }
-        }
+        $this->pdo = ModeleMere::getPdo($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
     }
 
     public function insertCategorie($tab)

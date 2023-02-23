@@ -1,5 +1,10 @@
 /* home.php */
 
+:root {
+    --cursor-logo: url("images/torche.png"), auto;
+    --cursor-logo-pointer: url("images/test.png"), auto;
+}
+
 button {
     border: none;
     background: none;
@@ -19,6 +24,8 @@ button {
 
 .image-accueil {
     filter: brightness(30%);
+    border-radius: 15px;
+    cursor: var(--cursor-logo-pointer);
 }
 
 .carroussel-image-relative {
