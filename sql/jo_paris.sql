@@ -192,7 +192,7 @@ CREATE TABLE Louer
 #------------------------------------------------------------
 
 delimiter $
-create procedure insertClientPar (IN c_nom varchar(50), IN c_email varchar(50), IN c_mdp varchar(50), 
+create procedure insertClientPart (IN c_nom varchar(50), IN c_email varchar(50), IN c_mdp varchar(50), 
 IN c_tel varchar(50), IN c_role varchar(50), IN c_prenom varchar(50)) 
 Begin 
         Declare c_iduser int(3); 
