@@ -9,7 +9,10 @@
             <td> Téléphone </td>
             <td> Email </td>
             <td> Id type-services </td>
-            <td> Opérations </td>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                    echo "<td> Opérations </td>";
+                }
+            ?>
         </tr>
 
         <?php
@@ -27,6 +30,8 @@
             
 
             //Opération supprimer et modifier
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+
             echo "<td>";
                 echo "<a class='img-dif' href='index.php?page=2&action=sup&idservice=".$unService['idservice']."'>";
                 echo "<img src='images/Delete.png' height='30' width='30'";
@@ -35,8 +40,9 @@
                 echo "<img src='images/Edit.png' height='30' width='30'";
                 echo "</a>";
             echo "</td>";
-            echo "</tr> ";
             }
+            echo "</tr> ";
+        }
 
         ?>
     </table>

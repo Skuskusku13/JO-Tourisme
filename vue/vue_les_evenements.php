@@ -12,7 +12,10 @@
             <td> Horraire Fin </td>
             <td> Capacite </td>
             <td> Idcategorie </td>
-            <td> Opérations </td>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+                echo "<td> Opérations </td>";
+            }
+            ?>
         </tr>
 
         <?php
@@ -31,6 +34,8 @@
                     <td>" . $unEvenement["idcategorie"] . "</td>";
 
             //Opération supprimer et modifier
+            if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+            
                 echo "<td>";
                 echo "<a class='img-dif' href='index.php?page=1&action=sup&idevenement=" . $unEvenement['idevenement'] . "'>";
                 echo "<img src='images/Delete.png' height='30' width='30'";
@@ -39,6 +44,7 @@
                 echo "<img src='images/Edit.png' height='30' width='30'";
                 echo "</a>";
                 echo "</td>";
+            }
             echo "</tr>";
         }
         ?>

@@ -18,15 +18,16 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
     }
 }
 
-
-require_once("vue/vue_insert_evenement.php");
-if (isset($_POST['Valider'])) {
-    $c_Event->insertEvenement($_POST);
-}
-
-if (isset($_POST['Modifier'])) {
-    $c_Event->updateEvenement($_POST);
-    header("Location: index.php?page=1");
+if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
+    require_once("vue/vue_insert_evenement.php");
+    if (isset($_POST['Valider'])) {
+        $c_Event->insertEvenement($_POST);
+    }
+    
+    if (isset($_POST['Modifier'])) {
+        $c_Event->updateEvenement($_POST);
+        header("Location: index.php?page=1");
+    }
 }
 
 $lesEvenements = $c_Event->selectAllEvenements();
