@@ -6,9 +6,9 @@ class ModeleUser
 
     private $pdo;
 
-    public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
+    public function __construct($serveur, $bdd, $user, $mdp)
     {
-        $this->pdo = ModeleMere::getPdo($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+        $this->pdo = ModeleMere::getPdo($serveur, $bdd, $user, $mdp);
     }
 
     public function insertClientPar($tab)

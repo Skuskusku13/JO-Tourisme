@@ -6,9 +6,9 @@ class ControleurUser
 
     private $mod;
 
-    public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
+    public function __construct($serveur, $bdd, $user, $mdp)
     {
-        $this->mod = new ModeleUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+        $this->mod = new ModeleUser($serveur, $bdd, $user, $mdp);
     }
 
 

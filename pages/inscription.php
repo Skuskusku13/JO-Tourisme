@@ -1,6 +1,5 @@
 <?php
 require_once("controleur/controleurUser.class.php");
-$controleur = new ControleurUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
 ?>
 
 <br>
@@ -31,11 +30,11 @@ if (isset($_POST['Professionnel'])) {
 }
 
 if (isset($_POST['InscriptionPart'])) {
-    $controleur->insertClientPar($_POST);
+    $c_User->insertClientPar($_POST);
     // header("Location: index.php?page=1");
 }
 
 if (isset($_POST['InscriptionPro'])) {
-    $controleur->insertClientPro($_POST);
+    $c_User->insertClientPro($_POST);
 }
 ?>
