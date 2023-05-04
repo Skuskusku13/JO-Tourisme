@@ -1,6 +1,4 @@
 <h2> Insertion d'un évènement </h2>
-
-<main>
     <form method="post" action="">
         <table class="table-insert">
             <tr>

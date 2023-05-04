@@ -12,4 +12,3 @@
             </tr>
         </table>
     </form>
-</main>

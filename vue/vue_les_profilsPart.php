@@ -20,4 +20,3 @@
             echo "</tr>";
     ?>
 </table>
-</main> 
