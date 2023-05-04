@@ -6,9 +6,9 @@ class ControleurCategorie  {
 
     private $mod;
 
-    public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
+    public function __construct($serveur, $bdd, $user, $mdp)
     {
-        $this->mod = new ModeleCategorie($serveur, $serveur2,  $bdd, $user, $mdp, $mdp2);
+        $this->mod = new ModeleCategorie($serveur, $bdd, $user, $mdp);
     }
 
     public function insertCategorie($tab)

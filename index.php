@@ -7,11 +7,11 @@ require_once("controleur/controleurTypeService.class.php");
 require_once("controleur/controleurUser.class.php");
 require_once("controleur/config_bdd.php");
 // instanciation du controleur 
-$c_Categories = new ControleurCategorie($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
-$c_Event = new ControleurEvent($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
-$c_Service = new ControleurService($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
-$c_TypeService = new ControleurTypeService($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
-$c_User = new ControleurUser($serveur, $serveur2, $bdd, $user, $mdp, $mdp2);
+$c_Categories = new ControleurCategorie($serveur, $bdd, $user, $mdp);
+$c_Event = new ControleurEvent($serveur, $bdd, $user, $mdp);
+$c_Service = new ControleurService($serveur, $bdd, $user, $mdp);
+$c_TypeService = new ControleurTypeService($serveur, $bdd, $user, $mdp);
+$c_User = new ControleurUser($serveur, $bdd, $user, $mdp);
 
 ?>
 
