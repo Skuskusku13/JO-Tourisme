@@ -3,7 +3,7 @@
 $lesCategories = $c_Categories->selectAllCategories();
 $lesEvenements = $c_Event->selectAllEvenements();
 
-
+$tab = isset($_SESSION['email']) ? $c_Event->selectOneInscri($_SESSION['iduser']) : array();
 $lEvenement = null;
 if (isset($_GET['action']) and isset($_GET['idevenement'])) {
     $action = $_GET['action'];
@@ -14,6 +14,18 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
             break;
         case "edit":
             $lEvenement = $c_Event->selectWhereEvenement($idevenement);
+            break;
+        case "view":
+            $lEvenement = $c_Event->selectWhereEvenement($idevenement);
+            $lesInscris = $c_Event->selectAllInscris($idevenement);
+            require_once("vue/vue_les_inscris.php");
+            break;
+        case "inscr":
+            $c_Event->addInscris($idevenement);
+            echo "<script type='text/javascript'>
+                alert('Vous avez bien été inscrit');
+            </script>";
+            header("Location: index.php?page=1");
             break;
     }
 }

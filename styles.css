@@ -13,6 +13,8 @@
 }
 
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     position: relative;
     cursor:  url("images/torche_noir.png") 4 12, auto;
@@ -113,7 +115,7 @@ h1, h2 {
 /* table d'affichages */
 
 .table-affiche {
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
 }
 
 .table-affiche td {
@@ -127,6 +129,7 @@ h1, h2 {
 
 .table-affiche tr:hover {
     background-color: #A8E7FD;
+    margin-bottom: 100px;
 }
 
 /* fin tables d'affichage */
@@ -146,8 +149,7 @@ h1, h2 {
 /* footer */
 
 footer {
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
     height: auto;
     width: 100%;
     color: white;

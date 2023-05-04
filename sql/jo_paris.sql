@@ -166,7 +166,6 @@ CREATE TABLE Inscription
     iduser    Int NOT NULL ,
     idevenement Int NOT NULL ,
     dateD       Date NOT NULL ,
-    commentaire Text NOT NULL ,
     statut      Varchar (50) NOT NULL ,
     PRIMARY KEY (iduser,idevenement) ,
     FOREIGN KEY (iduser) REFERENCES user(iduser) ,

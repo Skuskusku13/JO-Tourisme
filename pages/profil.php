@@ -1,4 +1,7 @@
 <?php
+if(!isset($_SESSION['email'])) {
+    header("Location: index.php?page=0");
+}
 
 // on récupère notre user qui a le rôle professionnel ou particulier en se servant de la variable de session
 $unUser = $c_User->findByRole($_SESSION['role'], $_SESSION['iduser']);

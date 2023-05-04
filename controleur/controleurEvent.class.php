@@ -42,5 +42,19 @@ class ControleurEvent {
     {
         $this->mod->updateEvenement($tab);
     }
+
+    public function addInscris($idevenement) {
+        $this->mod->addInscris($idevenement);
+    }
+
+    public function selectAllInscris($idevenement) {
+        $lesInscris = $this->mod->selectAllInscris($idevenement);
+        return $lesInscris;
+    }
+
+    public function selectOneInscri($iduser) {
+        $unInscri = $this->mod->selectOneInscri($iduser);
+        return $unInscri;
+    }
 }
 ?>

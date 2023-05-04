@@ -95,6 +95,56 @@ class ModeleEvent
             $insert->execute($donnees);
         }
     }
+
+    public function addInscris($idevenement) {
+        $req = "INSERT INTO Inscription VALUES(:iduser, :idevenement, sysdate(), :statut);";
+        $donnees = array(
+            ":iduser" => $_SESSION['iduser'],
+            ":idevenement" => $idevenement,
+            ":statut" => "Accepté",
+        );
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $insert = $this->pdo->prepare($req);
+            $insert->execute($donnees);
+        }
+    }
+
+    public function selectAllInscris($idevenement) {
+        $req = "SELECT * FROM Inscription inner join user on user.iduser = Inscription.iduser WHERE idevenement=:idevenement;";
+        $donnees = array(
+            ":idevenement" => $idevenement,
+        );
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($req);
+            $select->execute($donnees);
+            $lesInscris = $select->fetchAll();
+            return $lesInscris;
+        } else {
+            return null;
+        }
+    }
+
+    public function selectOneInscri($iduser) {
+        $req = "SELECT * FROM Inscription WHERE iduser=:iduser;";
+        $donnees = array(
+            ":iduser" => $iduser,
+        );
+        if ($this->pdo != null) {
+            //on prepare la requete
+            $select = $this->pdo->prepare($req);
+            $select->execute($donnees);
+            $unInscri = $select->fetchAll();
+            $tab = array();
+            foreach($unInscri as $inscr){
+                $tab[]= $inscr["idevenement"];
+            }
+            return $tab;
+        } else {
+            return null;
+        }
+    }
 }
 
 

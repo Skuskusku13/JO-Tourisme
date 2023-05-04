@@ -1,4 +1,3 @@
-<main>
     <h2> Insertion d'un service </h2>
 
     <form method="post" action="">
