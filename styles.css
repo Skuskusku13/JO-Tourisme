@@ -8,14 +8,14 @@
 }
 
 :root {
-    --cursor-logo: url("images/torche_noir.png"), auto;
-    --cursor-logo-pointer: url(images/torche_feu.png);
+    --cursor-logo: url("images/torche.png"), auto;
+    --cursor-logo-pointer: url("images/test.png"), pointer;
 }
 
 body {
     min-height: 100vh;
     position: relative;
-    cursor:  url("images/torche_noir.png") 4 12, auto;
+    cursor:  var(--cursor-logo);
 }
 
 main {
@@ -47,8 +47,7 @@ h1, h2 {
 }
 
 .navigation_navbar ul li a {
-    cursor: url(images/torche_feu.png), auto;
-    /* cursor: var(--cursor-logo-pointer) 4 12, pointer; */
+    cursor: var(--cursor-logo-pointer);
     color: aliceblue;
     text-decoration: none;
     font-size: 1.3em;
@@ -133,7 +132,6 @@ h1, h2 {
 
 /* home.php */
 .image-accueil {
-    cursor: url(images/torche_feu.png), auto;
     width: 400px;
     height: 300px;
     object-fit: cover;
@@ -174,7 +172,6 @@ footer {
 }
 
 .responsive_footer a:hover {
-    cursor: url(images/torche_feu.png), auto;
     background-color: #E3E3E3;
     border-radius: 15px;
     transition: 0.3s;
@@ -242,18 +239,5 @@ footer {
     width: 250px;
     height: 200px;
     object-fit: cover;
-}
-
-.img-dif {
-    cursor: url(images/torche_feu.png), auto;
-}
-
-.boutonP {
-    cursor: url(images/torche_feu.png), auto;
-}
-
-.reservation {
-    cursor: url(images/torche_feu.png), auto;
-
 }
 /*  fin affiche hotel */

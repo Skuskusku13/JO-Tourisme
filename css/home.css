@@ -1,8 +1,8 @@
 /* home.php */
 
 :root {
-    --cursor-logo: url("images/torche_noir.png"), auto;
-    --cursor-logo-pointer: url("images/torche_feu.png"), auto;
+    --cursor-logo: url("images/torche.png"), auto;
+    --cursor-logo-pointer: url("images/test.png"), auto;
 }
 
 button {
@@ -25,6 +25,7 @@ button {
 .image-accueil {
     filter: brightness(30%);
     border-radius: 15px;
+    cursor: var(--cursor-logo-pointer);
 }
 
 .carroussel-image-relative {
@@ -33,7 +34,6 @@ button {
 }
 
 .carroussel-image-relative .desc-image {
-    cursor: url("../images/torche_feu.png"), pointer;
     position: absolute;
     width: 90%;
     text-align: center;
