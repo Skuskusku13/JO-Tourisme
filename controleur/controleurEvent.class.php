@@ -6,9 +6,9 @@ class ControleurEvent {
 
     private $mod;
 
-    public function __construct($serveur,  $bdd, $user, $mdp)
+    public function __construct($serveur, $serveur2,  $bdd, $user, $mdp, $mdp2)
     {
-        $this->mod = new ModeleEvent($serveur, $bdd, $user, $mdp);
+        $this->mod = new ModeleEvent($serveur, $serveur2,  $bdd, $user, $mdp, $mdp2);
     }
 
     public function insertEvenement($tab)

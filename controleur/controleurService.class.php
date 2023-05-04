@@ -5,9 +5,9 @@ class ControleurService {
 
     private $mod;
 
-    public function __construct($serveur, $bdd, $user, $mdp)
+    public function __construct($serveur, $serveur2, $bdd, $user, $mdp, $mdp2)
     {
-        $this->mod = new ModeleService($serveur, $bdd, $user, $mdp);
+        $this->mod = new ModeleService($serveur, $serveur2,  $bdd, $user, $mdp, $mdp2);
     }
 
     public function insertService($tab)
