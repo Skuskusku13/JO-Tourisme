@@ -43,7 +43,7 @@
                 echo "<td>";
                     echo "<a class='img-dif' href='index.php?page=1&action=view&idevenement=".$unEvenement['idevenement']."'>";
                     echo "View</a>";
-                    if(!in_array($unEvenement['idevenement'], $tab)){
+                    if((!in_array($unEvenement['idevenement'], $tab)) && $_SESSION['role'] != "admin"){
                         echo "<a class='img-dif' href='index.php?page=1&action=inscr&idevenement=".$unEvenement['idevenement']."'>";
                         echo "S'inscrire</a>";
                     }
