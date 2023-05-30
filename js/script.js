@@ -36,7 +36,7 @@ function traiterPrenom() {
 function traiterMdp() {
     let mdp = document.getElementById("mdp").value;
 
-    if (mdp == "") {
+    if (mdp == "" || mdp.length < 8 ) {
         document.getElementById("mdp").style.backgroundColor = "#e24d36";
     } else {
         document.getElementById("mdp").style.backgroundColor = "#71bf71";
