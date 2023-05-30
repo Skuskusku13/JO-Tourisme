@@ -3,7 +3,11 @@
 <table class="table-affiche">
     <tr>
         <td> Nom </td>
-        <td> Email </td>
+       <?php
+       if ($_SESSION['role'] == "admin") {
+        echo "<td> Email </td>";
+       }
+       ?>
         <td> Date Inscription </td>
         <td> Statut </td>
     </tr>
@@ -13,8 +17,11 @@
         {
             echo 
             "<tr>
-                <td>".$unInscris["nom"]."</td>
-                <td>".$unInscris["email"]."</td>
+                <td>".$unInscris["nom"]."</td>";
+                if ($_SESSION['role'] == "admin") {
+                   echo "<td>".$unInscris["email"]."</td>";
+                }
+            echo"
                 <td>".$unInscris["dateD"]."</td>
                 <td>".$unInscris["statut"]."</td>";
         echo "</tr> ";

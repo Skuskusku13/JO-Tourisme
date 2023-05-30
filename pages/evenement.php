@@ -21,10 +21,7 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
             require_once("vue/vue_les_inscris.php");
             break;
         case "inscr":
-            $c_Event->addInscris($idevenement);
-            echo "<script type='text/javascript'>
-                alert('Vous avez bien été inscrit');
-            </script>";
+            $c_Event->addInscris($idevenement); 
             header("Location: index.php?page=1");
             break;
     }
@@ -44,3 +41,4 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
 
 $lesEvenements = $c_Event->selectAllEvenements();
 require_once("vue/vue_les_evenements.php");
+?>
