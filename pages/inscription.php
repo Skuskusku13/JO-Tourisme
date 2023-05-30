@@ -31,7 +31,6 @@ if (isset($_POST['Professionnel'])) {
 
 if (isset($_POST['InscriptionPart'])) {
     $c_User->insertClientPar($_POST);
-    // header("Location: index.php?page=1");
 }
 
 if (isset($_POST['InscriptionPro'])) {

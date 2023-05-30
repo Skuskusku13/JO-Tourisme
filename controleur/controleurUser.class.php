@@ -18,21 +18,26 @@ class ControleurUser
         foreach ($tab as $cle => $value) {
             $tab[$cle] = trim(htmlspecialchars($tab[$cle]));
             if ($value == "") {
-
+                echo "<p style='text-align: center; color: red; margin-top: 20px'>Veuillez remplir tous les champs</p>";
                 return null;
             }
         }
 
         if (isset($_POST['InscriptionPart'])) {
             $email = $_POST['email'];
+            $mdp = $_POST['mdp'];
             // on controle si le user existe déjà dans la base de donnée
             $unUser = $this->mod->checkUser($email);
             if (is_array($unUser)) {
                 echo "<p style='text-align: center;'>Email déjà existante</p>";
                 return null;
             } else {
-                echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
-                $this->mod->insertClientPar($tab);
+                if(strlen($mdp) < 7){
+                    echo "<p style='text-align: center; color: red; margin-top: 20px'>8 caractères minimum</p>";
+                } else {
+                    echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
+                    $this->mod->insertClientPar($tab);
+                }
             }
         }
     }
@@ -43,21 +48,26 @@ class ControleurUser
         foreach ($tab as $cle => $value) {
             $tab[$cle] = trim(htmlspecialchars($tab[$cle]));
             if ($value == "") {
-                echo "<p style='text-align: center;'>Veuillez remplir tous les champs</p>";
+                echo "<p style='text-align: center; color: red; margin-top: 20px'>Veuillez remplir tous les champs</p>";
                 return null;
             }
         }
 
         if (isset($_POST['InscriptionPro'])) {
             $email = $_POST['email'];
+            $mdp = $_POST['mdp'];+
             // on controle si le user existe déjà dans la base de donnée
             $unUser = $this->mod->checkUser($email);
             if (is_array($unUser)) {
                 echo "<p style='text-align: center;'>Email déjà existante</p>";
                 return null;
             } else {
-                echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
-                $this->mod->insertClientPro($tab);
+                if(strlen($mdp) < 7){
+                    echo "<p style='text-align: center; color: red; margin-top: 20px'>8 caractères minimum</p>";
+                } else {
+                    echo "<p style='text-align: center;'>Utilisateur enregistré !</p>";
+                    $this->mod->insertClientPro($tab);
+                }
             }
         }
     }

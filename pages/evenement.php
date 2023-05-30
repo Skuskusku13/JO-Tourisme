@@ -16,7 +16,7 @@ if (isset($_GET['action']) and isset($_GET['idevenement'])) {
             $lEvenement = $c_Event->selectWhereEvenement($idevenement);
             break;
         case "view":
-            $lEvenement = $c_Event->selectWhereEvenement($idevenement);
+            $selectEvent = $c_Event->selectWhereEvenement($idevenement);
             $lesInscris = $c_Event->selectAllInscris($idevenement);
             require_once("vue/vue_les_inscris.php");
             break;

@@ -1,4 +1,4 @@
-<h2> Liste d'inscription à l'évenement : <?php echo $lEvenement['nomEvenement'] ?> </h2>
+<h2> Liste d'inscription à l'évenement : <?php echo $selectEvent['nomEvenement'] ?> </h2>
 
 <table class="table-affiche">
     <tr>
