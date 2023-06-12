@@ -12,7 +12,7 @@ class ModeleTypeService {
 
     public function insertTypeservice($tab)
     {
-        $requete = "insert into Typeservice values (null, :libelle)";
+        $requete = "INSERT INTO Typeservice values (null, :libelle)";
         $donnees = array(
             ":libelle" => $tab['libelle'],
         );
@@ -26,7 +26,7 @@ class ModeleTypeService {
 
     public function selectAllTypeservices()
     {
-        $requete = "select * from Typeservice;";
+        $requete = "SELECT * FROM Typeservice;";
 
         if ($this->pdo != null) {
             // on prépare la requete 

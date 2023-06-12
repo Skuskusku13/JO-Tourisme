@@ -12,7 +12,7 @@ class ModeleCategorie {
 
     public function insertCategorie($tab)
     {
-        $requete = "insert into Categorie values (null, :libelle)";
+        $requete = "INSERT INTO Categorie VALUES (null, :libelle)";
         $donnees = array(
             ":libelle" => $tab['libelle'],
         );
@@ -26,7 +26,7 @@ class ModeleCategorie {
 
     public function selectAllCategories()
     {
-        $requete = "select * from Categorie;";
+        $requete = "SELECT * FROM Categorie;";
 
         if ($this->pdo != null) {
             // on prépare la requete 
