@@ -56,7 +56,7 @@ class ModeleService
 
     public function selectWhereService($idservice)
     {
-        $requete = "select * from Service where idservice = :idservice;";
+        $requete = "SELECT * FROM Service WHERE idservice = :idservice;";
         if ($this->pdo != null) {
             $donnees = array(":idservice" => $idservice);
             //on prepare la requete
@@ -71,7 +71,7 @@ class ModeleService
 
     public function updateService($tab)
     {
-        $requete = "update Service set libelle=:libelle, adresse=:adresse, prix=:prix, tel=:tel, email=:email, idtypeservices=:idtypeservices  where idservice= :idservice;";
+        $requete = "UPDATE Service SET libelle=:libelle, adresse=:adresse, prix=:prix, tel=:tel, email=:email, idtypeservices=:idtypeservices  WHERE idservice= :idservice;";
         $donnees = array(
             ":idservice" => $tab['idservice'],
             ":libelle" => $tab['libelle'],

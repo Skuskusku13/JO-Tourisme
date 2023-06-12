@@ -13,7 +13,7 @@ class ModeleUser
 
     public function insertClientPar($tab)
     {
-        $requete = "call insertClientPar(:nom, :email, :mdp, :tel, :role, :prenom);";
+        $requete = "CALL insertClientPar(:nom, :email, :mdp, :tel, :role, :prenom);";
         $donnees = array(
             ":nom" => $tab['nom'],
             ":email" => $tab['email'],
@@ -32,7 +32,7 @@ class ModeleUser
 
     public function insertClientPro($tab)
     {
-        $requete = "call insertClientPro(:nom, :email, :mdp, :tel, :role, :num_Siret, :adresse);";
+        $requete = "CALL insertClientPro(:nom, :email, :mdp, :tel, :role, :num_Siret, :adresse);";
         $donnees = array(
             ":nom" => $tab['nom'],
             ":email" => $tab['email'],
@@ -117,7 +117,7 @@ class ModeleUser
 
     public function checkUser($email)
     {
-        $req = "SELECT * FROM user WHERE email=:email;";
+        $req = "SELECT * FROM User WHERE email=:email;";
         $donnees = array(
             ":email" => $email,
         );
@@ -133,7 +133,7 @@ class ModeleUser
 
     public function selectUser($email, $mdp)
     {
-        $requete = "SELECT * FROM user WHERE email=? AND mdp=?";
+        $requete = "SELECT * FROM User WHERE email=? AND mdp=?";
         if ($this->pdo != null) {
             // on prépare la requete 
             $select  = $this->pdo->prepare($requete);
@@ -148,7 +148,7 @@ class ModeleUser
     public function findByRole($role, $iduser)
     {
         // requête sql avec un WHERE, ça sera un fetch et non pas fetchAll
-        $requete = "SELECT * FROM user WHERE role=? AND iduser=?";
+        $requete = "SELECT * FROM User WHERE role=? AND iduser=?";
         if ($this->pdo != null) {
             //  appel pdo avec la méthode prepare($sql) -> a mettre dans unevariable ex: select
             $select  = $this->pdo->prepare($requete);

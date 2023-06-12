@@ -7,9 +7,9 @@ create database jo_paris;
 use jo_paris; 
 
 #------------------------------------------------------------
-# Table: user
+# Table: User
 #------------------------------------------------------------
-create table user
+create table User
 (
     iduser int(3) NOT NULL auto_increment,
     nom VARCHAR(50) NOT NULL ,
@@ -30,7 +30,7 @@ CREATE TABLE Client_Pro
     num_Siret Varchar (50) NOT NULL ,
     adresse   Varchar (50) NOT NULL ,
     PRIMARY KEY (iduser) ,
-    FOREIGN KEY (iduser) REFERENCES user(iduser)
+    FOREIGN KEY (iduser) REFERENCES User(iduser)
 );
 
 
@@ -43,7 +43,7 @@ CREATE TABLE Client_Particulier
     iduser Int NOT NULL ,
     prenom   Varchar (50) NOT NULL ,
     PRIMARY KEY (iduser) ,
-    FOREIGN KEY (iduser) REFERENCES user(iduser)
+    FOREIGN KEY (iduser) REFERENCES User(iduser)
 );
 
 
@@ -137,7 +137,7 @@ CREATE TABLE Pub
     iduser    Int NOT NULL , 
     PRIMARY KEY (idpub) ,
     FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement) ,
-    FOREIGN KEY (iduser) REFERENCES user(iduser)
+    FOREIGN KEY (iduser) REFERENCES User(iduser)
 );
 
 
@@ -153,7 +153,7 @@ CREATE TABLE Commenter
     note        Int NOT NULL ,
     dateCom     Date NOT NULL ,   
     PRIMARY KEY (iduser,idevenement) ,
-    FOREIGN KEY (iduser) REFERENCES user(iduser) ,
+    FOREIGN KEY (iduser) REFERENCES User(iduser) ,
     FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
 );
 
@@ -168,7 +168,7 @@ CREATE TABLE Inscription
     dateD       Date NOT NULL ,
     statut      Varchar (50) NOT NULL ,
     PRIMARY KEY (iduser,idevenement) ,
-    FOREIGN KEY (iduser) REFERENCES user(iduser) ,
+    FOREIGN KEY (iduser) REFERENCES User(iduser) ,
     FOREIGN KEY (idevenement) REFERENCES Evenement(idevenement)
 );
 
@@ -196,9 +196,9 @@ IN c_tel varchar(50), IN c_role varchar(50), IN c_prenom varchar(50))
 Begin 
         Declare c_iduser int(3); 
         
-        insert into user values (null, c_nom, c_email, c_mdp, c_tel, c_role ); 
+        insert into User values (null, c_nom, c_email, c_mdp, c_tel, c_role ); 
         select iduser into c_iduser 
-        from user 
+        from User 
         where nom = c_nom and email =c_email and mdp=c_mdp and tel= c_tel; 
         insert into Client_Particulier values (c_iduser, c_prenom );
 End $
@@ -214,23 +214,23 @@ IN c_tel varchar(50), IN c_role varchar(50), IN c_num_Siret varchar(50), IN c_ad
 Begin 
         Declare c_iduser int(3); 
         
-        insert into user values (null, c_nom, c_email, c_mdp, c_tel, c_role ); 
+        insert into User values (null, c_nom, c_email, c_mdp, c_tel, c_role ); 
         select iduser into c_iduser 
-        from user 
+        from User 
         where nom = c_nom and email =c_email and mdp=c_mdp and tel= c_tel; 
         insert into Client_Pro values (c_iduser, c_num_Siret, c_adresse);
 End $
 delimiter  ;
 
 #------------------------------------------------------------
-# Procedure stockee pour la supression d_un Client_Partivulier
+# Procedure stockee pour la supression d_un Client_Particulier
 #------------------------------------------------------------
 
 delimiter $
 create procedure deleteClientPar (IN c_iduser int(3) ) 
 Begin 
         delete from Client_Particulier where iduser = c_iduser ;     
-        delete from user where iduser = c_iduser ;   
+        delete from User where iduser = c_iduser ;   
 End $
 delimiter  ; 
 
@@ -242,7 +242,7 @@ delimiter $
 create procedure deleteClientPro (IN c_iduser int(3) ) 
 Begin 
         delete from Client_Pro where iduser = c_iduser ;     
-        delete from user where iduser = c_iduser ;   
+        delete from User where iduser = c_iduser ;   
 End $
 delimiter  ; 
 
@@ -255,7 +255,7 @@ create procedure updateClientPar (IN c_nom varchar(50), IN c_email varchar(50),
 	IN c_mdp varchar(50), IN c_tel varchar(50) , IN c_role varchar(50), 
 	IN c_prenom varchar(50), IN c_iduser int(3)) 
 Begin  
-        update user set nom = c_nom, email = c_email, mdp = c_mdp, tel = c_tel, role =c_role 
+        update User set nom = c_nom, email = c_email, mdp = c_mdp, tel = c_tel, role =c_role 
         where iduser = c_iduser ; 
 
         update Client_Particulier set prenom = c_prenom where iduser = c_iduser ;
@@ -271,7 +271,7 @@ create procedure updateClientPro (IN c_nom varchar(50), IN c_email varchar(50),
 	IN c_mdp varchar(50), IN c_tel varchar(50) , IN c_role varchar(50), 
 	IN c_num_Siret varchar(50), IN c_adresse varchar(50), IN c_iduser int(3)) 
 Begin  
-        update user set nom = c_nom, email = c_email, mdp = c_mdp, tel = c_tel, role =c_role 
+        update User set nom = c_nom, email = c_email, mdp = c_mdp, tel = c_tel, role =c_role 
         where iduser = c_iduser ; 
 
         update Client_Pro set num_Siret = c_num_Siret, adresse = c_adresse  where iduser = c_iduser ;
@@ -279,10 +279,10 @@ End $
 delimiter  ; 
 
 #---------------------------------------------------------
-# insertion de USER dans la table user
+# insertion de User dans la table User
 #--------------------------------------------------------
 
-insert into user values (NULL, "Akilal", "a@gmail.com", "123", "0605743353", "admin");
+insert into User values (NULL, "Akilal", "a@gmail.com", "123", "0605743353", "admin");
 
 #----------------------------------------------------------------
 # insertion de Client_Particulier dans la table Client_Particulier
@@ -434,23 +434,23 @@ create view vueLoisirs as (
 	where t.idtypeservices = s.idtypeservices and t.idtypeservices = 4 or t.idtypeservices = 3
 );
 #-----------------------------------------------------------------
-# Creation d_une vue de user Part
+# Creation d_une vue de User Part
 #-----------------------------------------------------------------
 
 drop view if exists vueClientPart;
 create view vueClientPart as (
 	select u.iduser, u.nom, c.prenom, u.email, u.mdp, u.tel, u.role
-	from user u, Client_Particulier c
+	from User u, Client_Particulier c
 	where u.iduser = c.iduser
 );
 
 #-----------------------------------------------------------------
-# Creation d_une vue de user Pro
+# Creation d_une vue de User Pro
 #-----------------------------------------------------------------
 
 drop view if exists vueClientPro;
 create view vueClientPro as (
 	select u.iduser, u.nom, u.email, u.mdp, u.tel, u.role, c.num_Siret, c.adresse
-	from user u, Client_Pro c
+	from User u, Client_Pro c
 	where u.iduser = c.iduser
 );

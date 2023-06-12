@@ -12,7 +12,7 @@ class ModeleEvent
 
     public function insertEvenement($tab)
     {
-        $requete = "insert into Evenement values (null, :type, :dateEvent, :nomEvenement, :description, :adresse, :horraireD, :horraireF, :capacite, :idcategorie)";
+        $requete = "INSERT INT Evenement VALUES (null, :type, :dateEvent, :nomEvenement, :description, :adresse, :horraireD, :horraireF, :capacite, :idcategorie)";
         $donnees = array(
             ":type" => $tab['type'],
             ":dateEvent" => $tab['dateEvent'],
@@ -50,7 +50,7 @@ class ModeleEvent
 
     public function selectWhereEvenement($idevenement)
     {
-        $requete = "select * from Evenement where idevenement = :idevenement;";
+        $requete = "SELECT * FROM Evenement WHERE idevenement = :idevenement;";
         if ($this->pdo != null) {
             $donnees = array(":idevenement" => $idevenement);
             //on prepare la requete
@@ -65,7 +65,7 @@ class ModeleEvent
 
     public function deleteEvenement($idevenement)
     {
-        $requete = "delete from Evenement where idevenement = :idevenement;";
+        $requete = "DELETE FROM Evenement WHERE idevenement = :idevenement;";
         $donnees = array(":idevenement" => $idevenement);
         if ($this->pdo != null) {
             //on prepare la requete
@@ -76,7 +76,7 @@ class ModeleEvent
 
     public function updateEvenement($tab)
     {
-        $requete = "update Evenement set type=:type, dateEvent=:dateEvent, nomEvenement=:nomEvenement, description=:description, adresse=:adresse, horraireD=:horraireD, horraireF=:horraireF, capacite=:capacite, idcategorie=:idcategorie  where idevenement=:idevenement;";
+        $requete = "UPDATE Evenement SET type=:type, dateEvent=:dateEvent, nomEvenement=:nomEvenement, description=:description, adresse=:adresse, horraireD=:horraireD, horraireF=:horraireF, capacite=:capacite, idcategorie=:idcategorie  WHERE idevenement=:idevenement;";
         $donnees = array(
             ":type" => $tab['type'],
             ":dateEvent" => $tab['dateEvent'],
@@ -111,7 +111,7 @@ class ModeleEvent
     }
 
     public function selectAllInscris($idevenement) {
-        $req = "SELECT * FROM Inscription inner join user on user.iduser = Inscription.iduser WHERE idevenement=:idevenement;";
+        $req = "SELECT * FROM Inscription INNER JOIN User ON user.iduser = Inscription.iduser WHERE idevenement=:idevenement;";
         $donnees = array(
             ":idevenement" => $idevenement,
         );
