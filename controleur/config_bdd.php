@@ -1,6 +1,6 @@
 <?php
-    $serveur = "172.20.0.121";
+    $serveur = "51.68.46.25";
     $bdd = "jo_paris";
-    $user = "root";
-    $mdp = "btssio2023";
+    $user = "danl";
+    $mdp = "danl";
 ?>
